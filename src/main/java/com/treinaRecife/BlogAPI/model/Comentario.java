@@ -24,5 +24,13 @@ public class Comentario {
     @CreationTimestamp
     private LocalDate dataDeCriacao;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idUsuario")
+    private Usuario autor;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idPost")
+    private Post post;
+
 
 }

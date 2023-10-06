@@ -29,5 +29,9 @@ public class Post {
     @CreationTimestamp
     private LocalDate dataDeCriacao;
 
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario autor;
+
 
 }
