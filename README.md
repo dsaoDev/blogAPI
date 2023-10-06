@@ -1,5 +1,7 @@
 # Blog API
 
+[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/dsaoDev/blogAPI/blob/main/LICENSE)
+
 Esta é uma API de blog que permite criar, ler, atualizar e excluir posts, autores e comentários entre outras funcionalidades.
 
 ## Tecnologias Utilizadas
