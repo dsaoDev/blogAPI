@@ -2,6 +2,7 @@ package com.treinaRecife.BlogAPI.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -27,4 +28,11 @@ public class Usuario {
 
     @Column(length = 20, nullable = false)
     private String senha;
+    @Builder
+    public Usuario(String nome, String sobreNome, String email, String senha){
+        this.nome = nome;
+        this.sobreNome = sobreNome;
+        this.email = email;
+        this.senha = senha;
+    }
 }

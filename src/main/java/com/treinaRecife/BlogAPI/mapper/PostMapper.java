@@ -4,12 +4,15 @@ import com.treinaRecife.BlogAPI.dto.request.PostRequest;
 import com.treinaRecife.BlogAPI.dto.response.PostResponse;
 import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.model.Usuario;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PostMapper {
+public class PostMapper implements Mapper<PostRequest, Post, PostResponse>{
 
-    public Post dePostRequestParaEntidadePost (PostRequest postRequest){
+
+    @Override
+    public Post requestDtoParaEntidade(PostRequest postRequest) {
         var autorEntidade = new Usuario();
         autorEntidade.setIdUsuario(postRequest.getIdAutor());
 
@@ -20,8 +23,8 @@ public class PostMapper {
                 .build();
     }
 
-    public PostResponse dePostEntidadeParaPostResponse(Post post){
+    @Override
+    public PostResponse deEntidadeParaResponseDTO(Post post) {
         return new PostResponse(post);
     }
-
 }
