@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "7bed3bd1-14b1-4b32-a7b3-603ff7c924a7",
+		"name": "Blog API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26722240"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "salvar posts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"titulo\": \"The life of a Software Engineer \",\r\n    \"conteudo\": \"Conteudo sobre a vida de um Engenheiro de Software \",\r\n    \"idAutor\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/posts",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "salvar comentarios ao post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"texto\": \"Esse é um comentario Positivo sobre o Post How to be an software engineer v3\",\r\n    \"idAutor\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/posts/3/comentarios",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"posts",
+								"3",
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"titulo\": \"teste\",\r\n    \"conteudo\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/posts",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "achar post by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"titulo\": \"teste\",\r\n    \"conteudo\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/posts/",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar posts por id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"titulo\": \"teste\",\r\n    \"conteudo\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/posts/2",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"posts",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar posts por id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"titulo\": \"testeAtualizacaoDeDAta\",\r\n    \"conteudo\": \"testeAtualizacaoDeData\",\r\n    \"idAutor\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/posts/5",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"posts",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "achar posts por autor Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:8080}}/posts/1/autores",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"posts",
+								"1",
+								"autores"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autor",
+			"item": [
+				{
+					"name": "salvar usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"davi\",\r\n    \"sobreNome\":\"Silva\",\r\n    \"email\": \"dsao@test.com\",\r\n    \"senha\":\"12345678aD@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/autores",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"autores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "achar usuario por Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"davi-teste\",\r\n    \"sobreNome\":\"davi-teste\",\r\n    \"email\": \"davi@teste.com\",\r\n    \"senha\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/autores/",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"autores",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar usuario por id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"davi-teste-atualizacao\",\r\n    \"sobreNome\":\"davi-teste-atualizacao\",\r\n    \"email\": \"davi@teste.com-atualizacao\",\r\n    \"senha\":\"123-atualizacao\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/autores/1",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"autores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "paginar usuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"davi-teste\",\r\n    \"sobreNome\":\"davi-teste\",\r\n    \"email\": \"davi@teste.com\",\r\n    \"senha\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/autores",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"autores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar usuario por id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"davi-teste\",\r\n    \"sobreNome\":\"davi-teste\",\r\n    \"email\": \"davi@teste.com\",\r\n    \"senha\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/autores/1",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"autores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comentarios",
+			"item": [
+				{
+					"name": "Paginar comentarios by postId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:8080}}/comentarios/1",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"comentarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "paginar todos comentarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:8080}}/comentarios",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar comentario por id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"texto\": \"Esse é um comentario Positivo sobre o Post How to be an software engineer v3-teste\",\r\n    \"idAutor\": 1,\r\n    \"idPost\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/comentarios/1",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"comentarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar comentario por id comentario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{http://localhost:8080}}/comentarios/1",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"comentarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
