@@ -76,5 +76,5 @@ cd BlogAPI
 - PUT/comentarios/idComentario : Atualiza um comentario
 - DELETE/comentarios/idComentario : Deleta um comentario
 
-### Schema 
-![schema](https://github.com/dsaoDev/blogAPI/assets/129787872/0e328d72-cada-45e4-b78a-ab7559928e4d)
+## Schema 
+![schema](https://github.com/dsaoDev/blogAPI/assets/129787872/ea7559f2-e3ad-40ae-84b5-68f6ef90c635)
