@@ -28,6 +28,7 @@ public class Usuario {
 
     @Column(length = 20, nullable = false)
     private String senha;
+
     @Builder
     public Usuario(String nome, String sobreNome, String email, String senha){
         this.nome = nome;

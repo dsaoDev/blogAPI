@@ -5,6 +5,7 @@ import com.treinaRecife.BlogAPI.dto.response.PostResponse;
 import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.model.Usuario;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -26,5 +27,10 @@ public class PostMapper implements Mapper<PostRequest, Post, PostResponse>{
     @Override
     public PostResponse deEntidadeParaResponseDTO(Post post) {
         return new PostResponse(post);
+    }
+
+    @Override
+    public Page<PostResponse> converterPaginaDeEntidadeParaResponseDTO(Page<Post> paginaDeEntidade) {
+        return paginaDeEntidade.map(this::deEntidadeParaResponseDTO);
     }
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_posts")
@@ -28,7 +29,7 @@ public class Post {
 
     @Column(nullable = false)
     @CreationTimestamp
-    private LocalDate dataDeCriacao;
+    private LocalDateTime dataDeCriacao;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
