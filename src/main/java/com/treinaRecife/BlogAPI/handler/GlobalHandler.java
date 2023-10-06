@@ -2,6 +2,7 @@ package com.treinaRecife.BlogAPI.handler;
 
 import com.treinaRecife.BlogAPI.error.ErrorResponseForExceptions;
 import com.treinaRecife.BlogAPI.error.ErrorResponseForValidations;
+import com.treinaRecife.BlogAPI.exceptions.EmailDuplicadoException;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -43,10 +44,14 @@ public class GlobalHandler {
 
         return ResponseEntity.status(status).body(errorResponseForValidations);
     }
+    @ExceptionHandler(EmailDuplicadoException.class)
+    public ResponseEntity<ErrorResponseForExceptions> emailDuplicadoEx (EmailDuplicadoException e, HttpServletRequest request){
+        return handlingException(e, request, "Email já existe no sistema", HttpStatus.NOT_FOUND);
+    }
 
     //Metodo auxiliar para tratar exceções
     private ResponseEntity<ErrorResponseForExceptions> handlingException(RuntimeException e, HttpServletRequest path, String error, HttpStatus status) {
-        ErrorResponseForExceptions err = new ErrorResponseForExceptions(status.value(), error, LocalDateTime.now(), path.getRequestURI(), e.getMessage());
+        ErrorResponseForExceptions err = new ErrorResponseForExceptions(status.value(), path.getRequestURI(), LocalDateTime.now(), error, e.getMessage());
         return ResponseEntity.status(status).body(err);
     }
 }

@@ -2,6 +2,7 @@ package com.treinaRecife.BlogAPI.service;
 
 import com.treinaRecife.BlogAPI.dto.request.UsuarioRequest;
 import com.treinaRecife.BlogAPI.dto.response.UsuarioResponse;
+import com.treinaRecife.BlogAPI.exceptions.EmailDuplicadoException;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
 import com.treinaRecife.BlogAPI.mapper.UsuarioMapper;
 import com.treinaRecife.BlogAPI.model.Usuario;
@@ -22,6 +23,8 @@ public class UsuarioService {
 
     public UsuarioResponse salvarUsuario (UsuarioRequest usuarioRequest){
         var usuarioEntidade = usuarioMapper.requestDtoParaEntidade(usuarioRequest);
+
+        checarSeEmailNaoEstaDuplicado(usuarioEntidade.getEmail());
 
         usuarioRepository.save(usuarioEntidade);
 
@@ -63,6 +66,14 @@ public class UsuarioService {
         usuarioEntidade.setSobreNome(usuarioRequest.getSobreNome());
         usuarioEntidade.setEmail(usuarioRequest.getEmail());
         usuarioEntidade.setSenha(usuarioRequest.getSenha());
+    }
+
+    private void checarSeEmailNaoEstaDuplicado(String email){
+        var usuarioOptional = usuarioRepository.findByEmail(email);
+
+        if(usuarioOptional.isPresent()){
+            throw new EmailDuplicadoException("Email que você está tentando cadastrar já existe");
+        }
     }
 
 
