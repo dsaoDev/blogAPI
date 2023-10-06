@@ -50,7 +50,10 @@ cd BlogAPI
 ```
 ./mvnw spring-boot:run
 ```
-4. Após inicializar o Projeto estará disponivel  http://localhost:8080/{posts,autores,comentarios} por padrão, mas você pode alterar a porta no arquivo application.properties utilizando a propriedade server.port
+4. Após inicializar o Projeto estará disponivel  http://localhost:8080/{posts,autores,comentarios} por padrão, mas você pode alterar a porta no arquivo application.properties utilizando a propriedade server.port = {NUMERO DA PORTA}
+
+5. Importe a coleção do POSTMAN que está na RAIZ do Projeto e consuma os ENDPOINTS
+   
    
 ## Endpoints
 
