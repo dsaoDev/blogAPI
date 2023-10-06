@@ -5,7 +5,6 @@ import com.treinaRecife.BlogAPI.model.Comentario;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -27,7 +26,7 @@ public class ComentarioResponse {
     private Long idPost;
 
     //Conversão
-    public ComentarioResponse(Comentario comentarioEntity){
+    public ComentarioResponse(Comentario comentarioEntity) {
         this.idComentario = comentarioEntity.getIdComentario();
         this.texto = comentarioEntity.getTexto();
         this.dataDeCriacao = comentarioEntity.getDataDeCriacao();

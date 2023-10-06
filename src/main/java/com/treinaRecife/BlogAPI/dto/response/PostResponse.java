@@ -2,12 +2,10 @@ package com.treinaRecife.BlogAPI.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.treinaRecife.BlogAPI.model.Post;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -24,7 +22,7 @@ public class PostResponse {
 
     private Long idAutor;
 
-    public PostResponse(Post postEntity){
+    public PostResponse(Post postEntity) {
         this.idPost = postEntity.getIdPost();
         this.titulo = postEntity.getTitulo();
         this.conteudo = postEntity.getConteudo();

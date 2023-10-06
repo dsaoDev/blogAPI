@@ -36,7 +36,7 @@ public class Comentario {
     private Post post;
 
     @Builder
-    public Comentario(String texto, Usuario autor, Post post){
+    public Comentario(String texto, Usuario autor, Post post) {
         this.texto = texto;
         this.autor = autor;
         this.post = post;

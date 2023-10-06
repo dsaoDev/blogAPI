@@ -18,27 +18,27 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity<UsuarioResponse> salvarUsuario(@RequestBody UsuarioRequest usuarioRequest){
+    public ResponseEntity<UsuarioResponse> salvarUsuario(@RequestBody UsuarioRequest usuarioRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.salvarUsuario(usuarioRequest));
     }
 
     @GetMapping
-    public ResponseEntity<Page<UsuarioResponse>> paginarUsuarios(Pageable pageable){
+    public ResponseEntity<Page<UsuarioResponse>> paginarUsuarios(Pageable pageable) {
         return ResponseEntity.ok(usuarioService.paginarUsuarios(pageable));
     }
 
     @GetMapping(value = "/{idUsuario}")
-    public ResponseEntity<UsuarioResponse> acharUsuarioPorId (@PathVariable Long idUsuario){
+    public ResponseEntity<UsuarioResponse> acharUsuarioPorId(@PathVariable Long idUsuario) {
         return ResponseEntity.ok(usuarioService.acharUsuarioPorId(idUsuario));
     }
 
     @PutMapping(value = "/{idUsuario}")
-    public ResponseEntity<UsuarioResponse> atualizarUsuarioPorId(@PathVariable Long idUsuario, @RequestBody UsuarioRequest usuarioRequest){
-        return ResponseEntity.ok(usuarioService.atualizarUsuarioPorId(idUsuario,usuarioRequest));
+    public ResponseEntity<UsuarioResponse> atualizarUsuarioPorId(@PathVariable Long idUsuario, @RequestBody UsuarioRequest usuarioRequest) {
+        return ResponseEntity.ok(usuarioService.atualizarUsuarioPorId(idUsuario, usuarioRequest));
     }
 
     @DeleteMapping(value = "/{idUsuario}")
-    public ResponseEntity<Void> deletarUsuarioPorId(@PathVariable Long idUsuario){
+    public ResponseEntity<Void> deletarUsuarioPorId(@PathVariable Long idUsuario) {
         usuarioService.deletarUsuarioPorId(idUsuario);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

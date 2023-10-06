@@ -7,10 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "tb_posts")
@@ -39,13 +36,11 @@ public class Post {
 
 
     @Builder
-    public Post (String titulo, String conteudo, Usuario autor){
+    public Post(String titulo, String conteudo, Usuario autor) {
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.autor = autor;
     }
-
-
 
 
 }

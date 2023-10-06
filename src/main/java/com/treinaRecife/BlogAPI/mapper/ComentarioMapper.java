@@ -1,6 +1,7 @@
 package com.treinaRecife.BlogAPI.mapper;
 
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequest;
+import com.treinaRecife.BlogAPI.dto.request.ComentarioRequestMin;
 import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
 import com.treinaRecife.BlogAPI.model.Comentario;
 import com.treinaRecife.BlogAPI.model.Post;
@@ -29,6 +30,20 @@ public class ComentarioMapper implements Mapper<ComentarioRequest, Comentario, C
                 .build();
     }
 
+    public Comentario requestDtoMinParaEntidade(ComentarioRequestMin comentarioRequestMin, Long idPost){
+        var autorEntidade = new Usuario();
+        autorEntidade.setIdUsuario(comentarioRequestMin.getIdAutor());
+
+        var postEntidade = new Post();
+        postEntidade.setIdPost(idPost);
+
+        return Comentario.builder()
+                .autor(autorEntidade)
+                .post(postEntidade)
+                .texto(comentarioRequestMin.getTexto())
+                .build();
+    }
+
     @Override
     public ComentarioResponse deEntidadeParaResponseDTO(Comentario comentario) {
         return new ComentarioResponse(comentario);
@@ -38,15 +53,12 @@ public class ComentarioMapper implements Mapper<ComentarioRequest, Comentario, C
         return listComentarios.stream().map(this::deEntidadeParaResponseDTO).toList();
 
     }
-
-
-
-
-
     @Override
     public Page<ComentarioResponse> converterPaginaDeEntidadeParaResponseDTO(Page<Comentario> paginaDeEntidade) {
        return  paginaDeEntidade.map(this::deEntidadeParaResponseDTO);
     }
+
+
 
 
 }

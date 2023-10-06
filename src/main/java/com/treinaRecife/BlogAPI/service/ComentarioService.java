@@ -1,12 +1,14 @@
 package com.treinaRecife.BlogAPI.service;
 
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequest;
+import com.treinaRecife.BlogAPI.dto.request.ComentarioRequestMin;
 import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
-import com.treinaRecife.BlogAPI.dto.response.PostResponseComComentarios;
+import com.treinaRecife.BlogAPI.exceptions.ComentarioNotFoundException;
 import com.treinaRecife.BlogAPI.exceptions.PostNotFoundException;
 import com.treinaRecife.BlogAPI.mapper.ComentarioMapper;
 import com.treinaRecife.BlogAPI.model.Comentario;
 import com.treinaRecife.BlogAPI.model.Post;
+import com.treinaRecife.BlogAPI.model.Usuario;
 import com.treinaRecife.BlogAPI.repository.ComentarioRepository;
 import com.treinaRecife.BlogAPI.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,31 +24,68 @@ public class ComentarioService {
 
     private final PostRepository postRepository;
 
+    private final PostService postService;
+
     private final ComentarioMapper comentarioMapper;
 
-    public ComentarioResponse salvarComentariosToPostPeloIdPost(Long idPost, ComentarioRequest comentarioRequest) {
-        var postEntidade = returnPost(idPost);
+    public ComentarioResponse salvarComentariosToPostPeloIdPost(Long idPost, ComentarioRequestMin comentarioRequestMin) {
+        var postEntidade = postService.returnPost(idPost);
 
-        var comentarioEntidade = comentarioMapper.requestDtoParaEntidade(comentarioRequest);
+        var comentarioEntidade = comentarioMapper.requestDtoMinParaEntidade(comentarioRequestMin, idPost);
 
         comentarioEntidade.setPost(postEntidade);
-
-       // postEntidade.getComentarios().add(comentarioEntidade);
 
         comentarioRepository.save(comentarioEntidade);
 
         return comentarioMapper.deEntidadeParaResponseDTO(comentarioEntidade);
     }
 
-        public Page<ComentarioResponse> paginarComentariosByPostId(Long postId, Pageable pageable){
-            Page<ComentarioResponse> comentariosResponse;
-            comentariosResponse = comentarioMapper.converterPaginaDeEntidadeParaResponseDTO(comentarioRepository.findComentarioByPostId(postId,pageable));
-            return comentariosResponse;
-        }
+    public Page<ComentarioResponse> paginarComentariosByPostId(Long postId, Pageable pageable) {
+        var postEntidade = postService.returnPost(postId);
+
+        Page<ComentarioResponse> comentariosResponse;
+
+        comentariosResponse = comentarioMapper.converterPaginaDeEntidadeParaResponseDTO(comentarioRepository.findComentarioByPostId(postId, pageable));
+
+        return comentariosResponse;
+    }
+
+    public ComentarioResponse atualizarComentarioByIdComentario(Long idComentario, ComentarioRequest comentarioRequest) {
+        var comentarioEntidade = returnComentario(idComentario);
+
+        atualizarComentario(comentarioRequest, comentarioEntidade);
+
+        return comentarioMapper.deEntidadeParaResponseDTO(comentarioRepository.save(comentarioEntidade));
+    }
+
+    public Page<ComentarioResponse> paginarComentarios(Pageable pageable) {
+        return comentarioMapper.converterPaginaDeEntidadeParaResponseDTO(comentarioRepository.findAll(pageable));
+    }
+
+    public void deletarComentario(Long idComentario) {
+        var comentarioEntidade = returnComentario(idComentario);
+
+        comentarioRepository.deleteById(idComentario);
+    }
 
 
-    private Post returnPost(Long idPost) {
-        return postRepository.findById(idPost).orElseThrow(() -> new PostNotFoundException("Post com id " + idPost + " Não encontrado"));
+
+
+    public Comentario returnComentario(Long idComentario) {
+        return comentarioRepository.findById(idComentario).orElseThrow(() -> new ComentarioNotFoundException("Comentario com id " + idComentario + " Não existe"));
+    }
+
+
+    private void atualizarComentario(ComentarioRequest comentarioRequest, Comentario comentario) {
+        var post = new Post();
+        post.setIdPost(comentarioRequest.getIdPost());
+
+        var autor = new Usuario();
+        autor.setIdUsuario(comentarioRequest.getIdAutor());
+
+        comentario.setPost(post);
+        comentario.setAutor(autor);
+        comentario.setTexto(comentarioRequest.getTexto());
     }
 
 

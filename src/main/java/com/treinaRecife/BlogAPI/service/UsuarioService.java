@@ -54,11 +54,7 @@ public class UsuarioService {
 
 
 
-
-
-
-
-    private Usuario returnUsuario(Long idUsuario){
+    public Usuario returnUsuario(Long idUsuario){
         return usuarioRepository.findById(idUsuario).orElseThrow(() -> new UsuarioNotFoundException("Usuario com id " + idUsuario + " Não encontrado"));
     }
 

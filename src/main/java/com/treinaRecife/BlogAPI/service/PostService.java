@@ -2,11 +2,14 @@ package com.treinaRecife.BlogAPI.service;
 
 import com.treinaRecife.BlogAPI.dto.request.PostRequest;
 import com.treinaRecife.BlogAPI.dto.response.PostResponse;
+import com.treinaRecife.BlogAPI.exceptions.ComentarioNotFoundException;
 import com.treinaRecife.BlogAPI.exceptions.PostNotFoundException;
+import com.treinaRecife.BlogAPI.exceptions.UsuarioNotFoundException;
 import com.treinaRecife.BlogAPI.mapper.PostMapper;
 import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.model.Usuario;
 import com.treinaRecife.BlogAPI.repository.PostRepository;
+import com.treinaRecife.BlogAPI.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,11 +21,12 @@ public class PostService {
 
     private final PostMapper postMapper;
 
-   // private final ComentarioRepository comentarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
     private final PostRepository postRepository;
 
-   // private final ComentarioMapper comentarioMapper;
+    private final UsuarioService usuarioService;
+
 
     public PostResponse salvarPost(PostRequest postRequest) {
         var postEntidade = postMapper.requestDtoParaEntidade(postRequest);
@@ -55,24 +59,15 @@ public class PostService {
         postRepository.deleteById(postEntidade.getIdPost());
     }
 
-    /*public Post addComentariosAoPostPorIdDoPost(Long idPost, ComentarioRequest comentarioRequest){
-        var postEntidade = returnPost(idPost);
+    public Page<PostResponse> acharPostByAutorId(Long idAutor, Pageable pageable) {
+        var autorEntidade = usuarioService.returnUsuario(idAutor);
 
-        var comentarioEntidade = comentarioMapper.requestDtoParaEntidade(comentarioRequest);
-
-       postEntidade.getComentarios().add(comentarioEntidade);
-
-        comentarioRepository.save(comentarioEntidade);
-
-        return postEntidade;
-
-
-
-    }*/
+        return postMapper.converterPaginaDeEntidadeParaResponseDTO(postRepository.findPostsByAutorId(idAutor, pageable));
+    }
 
 
     //Metodo auxiliar
-    private Post returnPost(Long idPost) {
+    public Post returnPost(Long idPost) {
         return postRepository.findById(idPost).orElseThrow
                 (() -> new PostNotFoundException("Post com id " + idPost + " Não encontrado"));
     }
@@ -87,5 +82,7 @@ public class PostService {
         postEntidade.setTitulo(postRequest.getTitulo());
 
     }
+
+
 
 }

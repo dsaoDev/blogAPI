@@ -2,7 +2,6 @@ package com.treinaRecife.BlogAPI.mapper;
 
 import com.treinaRecife.BlogAPI.dto.request.PostRequest;
 import com.treinaRecife.BlogAPI.dto.response.PostResponse;
-import com.treinaRecife.BlogAPI.dto.response.PostResponseComComentarios;
 import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.model.Usuario;
 import org.springframework.data.domain.Page;
