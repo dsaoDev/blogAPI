@@ -2,14 +2,14 @@ package com.treinaRecife.BlogAPI.mapper;
 
 import com.treinaRecife.BlogAPI.dto.request.PostRequest;
 import com.treinaRecife.BlogAPI.dto.response.PostResponse;
+import com.treinaRecife.BlogAPI.dto.response.PostResponseComComentarios;
 import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.model.Usuario;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PostMapper implements Mapper<PostRequest, Post, PostResponse>{
+public class PostMapper implements Mapper<PostRequest, Post, PostResponse> {
 
 
     @Override
@@ -33,4 +33,7 @@ public class PostMapper implements Mapper<PostRequest, Post, PostResponse>{
     public Page<PostResponse> converterPaginaDeEntidadeParaResponseDTO(Page<Post> paginaDeEntidade) {
         return paginaDeEntidade.map(this::deEntidadeParaResponseDTO);
     }
+
+
 }
+

@@ -27,6 +27,6 @@ public class UsuarioMapper implements Mapper<UsuarioRequest, Usuario, UsuarioRes
 
     @Override
     public Page<UsuarioResponse> converterPaginaDeEntidadeParaResponseDTO(Page<Usuario> paginaDeEntidade) {
-        return null;
+        return paginaDeEntidade.map(this::deEntidadeParaResponseDTO);
     }
 }

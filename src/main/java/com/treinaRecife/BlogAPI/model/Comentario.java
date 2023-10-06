@@ -2,11 +2,13 @@ package com.treinaRecife.BlogAPI.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_comentarios")
@@ -14,6 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Comentario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idComentario;
@@ -22,7 +25,7 @@ public class Comentario {
     private String texto;
 
     @CreationTimestamp
-    private LocalDate dataDeCriacao;
+    private LocalDateTime dataDeCriacao;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "idUsuario")
@@ -31,6 +34,13 @@ public class Comentario {
     @ManyToOne(optional = false)
     @JoinColumn(name = "idPost")
     private Post post;
+
+    @Builder
+    public Comentario(String texto, Usuario autor, Post post){
+        this.texto = texto;
+        this.autor = autor;
+        this.post = post;
+    }
 
 
 }

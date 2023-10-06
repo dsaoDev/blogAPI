@@ -1,17 +1,16 @@
 package com.treinaRecife.BlogAPI.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.treinaRecife.BlogAPI.model.Post;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-@Getter
 @NoArgsConstructor
-public class PostResponse {
+@Getter
+@Setter
+public class PostResponseComComentarios {
 
     private Long idPost;
 
@@ -24,11 +23,10 @@ public class PostResponse {
 
     private Long idAutor;
 
-    public PostResponse(Post postEntity){
-        this.idPost = postEntity.getIdPost();
-        this.titulo = postEntity.getTitulo();
-        this.conteudo = postEntity.getConteudo();
-        this.dataDeCriacao = postEntity.getDataDeCriacao();
-        this.idAutor = postEntity.getAutor().getIdUsuario();
-    }
+
+    private List<ComentarioResponse> comentarios;
+
+
+
+
 }

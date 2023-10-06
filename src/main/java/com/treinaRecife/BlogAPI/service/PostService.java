@@ -18,9 +18,13 @@ public class PostService {
 
     private final PostMapper postMapper;
 
+   // private final ComentarioRepository comentarioRepository;
+
     private final PostRepository postRepository;
 
-    public PostResponse salvarPost (PostRequest postRequest){
+   // private final ComentarioMapper comentarioMapper;
+
+    public PostResponse salvarPost(PostRequest postRequest) {
         var postEntidade = postMapper.requestDtoParaEntidade(postRequest);
 
         postRepository.save(postEntidade);
@@ -28,37 +32,53 @@ public class PostService {
         return postMapper.deEntidadeParaResponseDTO(postEntidade);
     }
 
-    public PostResponse acharPostPorId(Long idPost){
+    public PostResponse acharPostPorId(Long idPost) {
         var postEntidade = returnPost(idPost);
         return postMapper.deEntidadeParaResponseDTO(postEntidade);
     }
 
-    public Page<PostResponse> paginarPosts(Pageable pageable){
+    public Page<PostResponse> paginarPosts(Pageable pageable) {
         return postMapper.converterPaginaDeEntidadeParaResponseDTO(postRepository.findAll(pageable));
     }
 
-    public PostResponse atualizarPostPorId(Long idPost, PostRequest postRequest){
+    public PostResponse atualizarPostPorId(Long idPost, PostRequest postRequest) {
         var postEntidade = returnPost(idPost);
 
-        atualizarDadosPost(postRequest,postEntidade);
+        atualizarDadosPost(postRequest, postEntidade);
 
         return postMapper.deEntidadeParaResponseDTO(postEntidade);
     }
 
-    public void deletarPostPorId(Long idPost){
+    public void deletarPostPorId(Long idPost) {
         var postEntidade = returnPost(idPost);
 
         postRepository.deleteById(postEntidade.getIdPost());
     }
 
+    /*public Post addComentariosAoPostPorIdDoPost(Long idPost, ComentarioRequest comentarioRequest){
+        var postEntidade = returnPost(idPost);
+
+        var comentarioEntidade = comentarioMapper.requestDtoParaEntidade(comentarioRequest);
+
+       postEntidade.getComentarios().add(comentarioEntidade);
+
+        comentarioRepository.save(comentarioEntidade);
+
+        return postEntidade;
+
+
+
+    }*/
+
 
     //Metodo auxiliar
-    private Post returnPost(Long idPost){
+    private Post returnPost(Long idPost) {
         return postRepository.findById(idPost).orElseThrow
                 (() -> new PostNotFoundException("Post com id " + idPost + " Não encontrado"));
     }
+
     //Metodo Auxiliar
-    private void atualizarDadosPost(PostRequest postRequest, Post postEntidade){
+    private void atualizarDadosPost(PostRequest postRequest, Post postEntidade) {
         Usuario autorEntidade = new Usuario();
         autorEntidade.setIdUsuario(postRequest.getIdAutor());
 

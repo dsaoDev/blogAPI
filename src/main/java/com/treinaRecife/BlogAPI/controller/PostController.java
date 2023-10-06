@@ -1,7 +1,12 @@
 package com.treinaRecife.BlogAPI.controller;
 
+import com.treinaRecife.BlogAPI.dto.request.ComentarioRequest;
 import com.treinaRecife.BlogAPI.dto.request.PostRequest;
+import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
 import com.treinaRecife.BlogAPI.dto.response.PostResponse;
+import com.treinaRecife.BlogAPI.dto.response.PostResponseComComentarios;
+import com.treinaRecife.BlogAPI.model.Post;
+import com.treinaRecife.BlogAPI.service.ComentarioService;
 import com.treinaRecife.BlogAPI.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -16,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
 
     private final PostService postService;
+
+    private final ComentarioService comentarioService;
 
     @PostMapping
     public ResponseEntity<PostResponse> salvarPost(@RequestBody PostRequest postRequest){
@@ -41,6 +48,11 @@ public class PostController {
     public ResponseEntity<Void> deletarPostPorId (@PathVariable Long idPost){
         postService.deletarPostPorId(idPost);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @PostMapping(value = "/{idPost}/comentarios")
+    public ResponseEntity<ComentarioResponse> salvarComentariosToPost(@PathVariable Long idPost, @RequestBody ComentarioRequest comentarioRequest){
+        return ResponseEntity.status(HttpStatus.CREATED).body(comentarioService.salvarComentariosToPostPeloIdPost(idPost,comentarioRequest));
     }
 
 

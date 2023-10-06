@@ -9,6 +9,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_posts")
@@ -31,14 +33,22 @@ public class Post {
     @CreationTimestamp
     private LocalDateTime dataDeCriacao;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "idUsuario")
     private Usuario autor;
+
+    @OneToMany(mappedBy = "post")
+    private List<Comentario> comentarios = new ArrayList<>();
+
     @Builder
     public Post (String titulo, String conteudo, Usuario autor){
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.autor = autor;
+    }
+
+    public void addComments(Comentario comentario){
+        comentarios.add(comentario);
     }
 
 
