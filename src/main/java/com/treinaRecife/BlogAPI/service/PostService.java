@@ -2,9 +2,7 @@ package com.treinaRecife.BlogAPI.service;
 
 import com.treinaRecife.BlogAPI.dto.request.PostRequest;
 import com.treinaRecife.BlogAPI.dto.response.PostResponse;
-import com.treinaRecife.BlogAPI.exceptions.ComentarioNotFoundException;
-import com.treinaRecife.BlogAPI.exceptions.PostNotFoundException;
-import com.treinaRecife.BlogAPI.exceptions.UsuarioNotFoundException;
+import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
 import com.treinaRecife.BlogAPI.mapper.PostMapper;
 import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.model.Usuario;
@@ -69,7 +67,7 @@ public class PostService {
     //Metodo auxiliar
     public Post returnPost(Long idPost) {
         return postRepository.findById(idPost).orElseThrow
-                (() -> new PostNotFoundException("Post com id " + idPost + " Não encontrado"));
+                (() -> new EntidadeNotFoundException("Post com id " + idPost + " Não encontrado"));
     }
 
     //Metodo Auxiliar

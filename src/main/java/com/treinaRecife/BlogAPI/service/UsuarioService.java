@@ -2,7 +2,7 @@ package com.treinaRecife.BlogAPI.service;
 
 import com.treinaRecife.BlogAPI.dto.request.UsuarioRequest;
 import com.treinaRecife.BlogAPI.dto.response.UsuarioResponse;
-import com.treinaRecife.BlogAPI.exceptions.UsuarioNotFoundException;
+import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
 import com.treinaRecife.BlogAPI.mapper.UsuarioMapper;
 import com.treinaRecife.BlogAPI.model.Usuario;
 import com.treinaRecife.BlogAPI.repository.UsuarioRepository;
@@ -55,7 +55,7 @@ public class UsuarioService {
 
 
     public Usuario returnUsuario(Long idUsuario){
-        return usuarioRepository.findById(idUsuario).orElseThrow(() -> new UsuarioNotFoundException("Usuario com id " + idUsuario + " Não encontrado"));
+        return usuarioRepository.findById(idUsuario).orElseThrow(() -> new EntidadeNotFoundException("Usuario com id " + idUsuario + " Não encontrado"));
     }
 
     private void atualizarDadosDoUsuario(Usuario usuarioEntidade , UsuarioRequest usuarioRequest){

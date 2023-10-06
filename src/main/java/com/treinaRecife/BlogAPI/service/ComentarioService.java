@@ -3,8 +3,7 @@ package com.treinaRecife.BlogAPI.service;
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequest;
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequestMin;
 import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
-import com.treinaRecife.BlogAPI.exceptions.ComentarioNotFoundException;
-import com.treinaRecife.BlogAPI.exceptions.PostNotFoundException;
+import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
 import com.treinaRecife.BlogAPI.mapper.ComentarioMapper;
 import com.treinaRecife.BlogAPI.model.Comentario;
 import com.treinaRecife.BlogAPI.model.Post;
@@ -72,7 +71,7 @@ public class ComentarioService {
 
 
     public Comentario returnComentario(Long idComentario) {
-        return comentarioRepository.findById(idComentario).orElseThrow(() -> new ComentarioNotFoundException("Comentario com id " + idComentario + " Não existe"));
+        return comentarioRepository.findById(idComentario).orElseThrow(() -> new EntidadeNotFoundException("Comentario com id " + idComentario + " Não existe"));
     }
 
 
