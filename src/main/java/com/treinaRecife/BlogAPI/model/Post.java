@@ -37,8 +37,6 @@ public class Post {
     @JoinColumn(name = "idUsuario")
     private Usuario autor;
 
-    @OneToMany(mappedBy = "post")
-    private List<Comentario> comentarios = new ArrayList<>();
 
     @Builder
     public Post (String titulo, String conteudo, Usuario autor){
@@ -47,9 +45,7 @@ public class Post {
         this.autor = autor;
     }
 
-    public void addComments(Comentario comentario){
-        comentarios.add(comentario);
-    }
+
 
 
 }

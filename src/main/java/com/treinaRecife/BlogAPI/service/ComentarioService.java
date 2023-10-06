@@ -31,7 +31,7 @@ public class ComentarioService {
 
         comentarioEntidade.setPost(postEntidade);
 
-        postEntidade.getComentarios().add(comentarioEntidade);
+       // postEntidade.getComentarios().add(comentarioEntidade);
 
         comentarioRepository.save(comentarioEntidade);
 

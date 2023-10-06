@@ -2,7 +2,6 @@ package com.treinaRecife.BlogAPI.mapper;
 
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequest;
 import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
-import com.treinaRecife.BlogAPI.dto.response.PostResponseComComentarios;
 import com.treinaRecife.BlogAPI.model.Comentario;
 import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.model.Usuario;
@@ -40,19 +39,7 @@ public class ComentarioMapper implements Mapper<ComentarioRequest, Comentario, C
 
     }
 
-    public PostResponseComComentarios deEntidadeParaPostDTOComComentariosEmbutidos(Comentario comentarioEntidade){
-        PostResponseComComentarios postResponseComComentarios = new PostResponseComComentarios();
 
-
-        postResponseComComentarios.setTitulo(comentarioEntidade.getPost().getTitulo());
-        postResponseComComentarios.setConteudo(comentarioEntidade.getPost().getConteudo());
-        postResponseComComentarios.setDataDeCriacao(comentarioEntidade.getPost().getDataDeCriacao());
-        postResponseComComentarios.setIdPost(comentarioEntidade.getPost().getIdPost());
-        postResponseComComentarios.setIdAutor(comentarioEntidade.getPost().getAutor().getIdUsuario());
-        postResponseComComentarios.setComentarios(listConverterDeComentarioEntidadeParaListaDTO(comentarioEntidade.getPost().getComentarios()));
-
-        return postResponseComComentarios;
-    }
 
 
 
