@@ -3,6 +3,7 @@ package com.treinaRecife.BlogAPI.controller;
 import com.treinaRecife.BlogAPI.dto.request.UsuarioRequest;
 import com.treinaRecife.BlogAPI.dto.response.UsuarioResponse;
 import com.treinaRecife.BlogAPI.service.UsuarioService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +19,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity<UsuarioResponse> salvarUsuario(@RequestBody UsuarioRequest usuarioRequest) {
+    public ResponseEntity<UsuarioResponse> salvarUsuario(@RequestBody @Valid UsuarioRequest usuarioRequest) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.salvarUsuario(usuarioRequest));
     }
 
@@ -33,7 +34,7 @@ public class UsuarioController {
     }
 
     @PutMapping(value = "/{idUsuario}")
-    public ResponseEntity<UsuarioResponse> atualizarUsuarioPorId(@PathVariable Long idUsuario, @RequestBody UsuarioRequest usuarioRequest) {
+    public ResponseEntity<UsuarioResponse> atualizarUsuarioPorId(@PathVariable Long idUsuario, @RequestBody @Valid UsuarioRequest usuarioRequest) {
         return ResponseEntity.ok(usuarioService.atualizarUsuarioPorId(idUsuario, usuarioRequest));
     }
 

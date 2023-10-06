@@ -3,6 +3,7 @@ package com.treinaRecife.BlogAPI.controller;
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequest;
 import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
 import com.treinaRecife.BlogAPI.service.ComentarioService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,7 +25,7 @@ public class ComentarioController {
     }
 
     @PutMapping(value = "{idComentario}")
-    public ResponseEntity<ComentarioResponse> atualizarComentarioByComentarioId(@PathVariable Long idComentario, @RequestBody ComentarioRequest comentarioRequest) {
+    public ResponseEntity<ComentarioResponse> atualizarComentarioByComentarioId(@PathVariable Long idComentario, @RequestBody @Valid ComentarioRequest comentarioRequest) {
         return ResponseEntity.ok(comentarioService.atualizarComentarioByIdComentario(idComentario, comentarioRequest));
     }
 
