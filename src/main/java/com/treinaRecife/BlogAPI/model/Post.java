@@ -2,6 +2,7 @@ package com.treinaRecife.BlogAPI.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -32,6 +33,12 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario autor;
+    @Builder
+    public Post (String titulo, String conteudo, Usuario autor){
+        this.titulo = titulo;
+        this.conteudo = conteudo;
+        this.autor = autor;
+    }
 
 
 }
