@@ -44,15 +44,18 @@ git clone https://github.com/dsaoDev/blogAPI.git
 ```
 cd BlogAPI
 ```
-
-3. Abrir o projeto com sua IDE de preferência ou Inicializar o Projeto via CMD
+3. Criar um schema no seu banco de dados chamado blogAPI
+```
+create schema blogAPI
+```
+4. Abrir o projeto com sua IDE de preferência ou Inicializar o Projeto via CMD
 
 ```
 ./mvnw spring-boot:run
 ```
-4. Após inicializar o Projeto estará disponivel  http://localhost:8080/{posts,autores,comentarios} por padrão, mas você pode alterar a porta no arquivo application.properties utilizando a propriedade server.port = {NUMERO DA PORTA}
+5. Após inicializar o Projeto estará disponivel  http://localhost:8080/{posts,autores,comentarios} por padrão, mas você pode alterar a porta no arquivo application.properties utilizando a propriedade server.port = {NUMERO DA PORTA}
 
-5. Importe a coleção do POSTMAN que está na RAIZ do Projeto e consuma os ENDPOINTS
+6. Importe a coleção do POSTMAN que está na RAIZ do Projeto e consuma os ENDPOINTS
    
    
 ## Endpoints
