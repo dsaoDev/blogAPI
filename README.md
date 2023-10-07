@@ -1,6 +1,4 @@
-# Blog API
-
-[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/dsaoDev/blogAPI/blob/main/LICENSE)
+# Blog API [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/dsaoDev/blogAPI/blob/main/LICENSE)
 
 Esta é uma API de blog que permite criar, ler, atualizar e excluir posts, autores e comentários entre outras funcionalidades.
 
@@ -33,26 +31,32 @@ Devtools -> Utilizado para fazer o Live reload para melhor experiência de desen
 ## Instalação
 - Certifique-se de ter o Java 17 instalado em sua máquina.
 - Sua IDE de preferência e de preferência o Banco de dados MySQL
-- Postman ou Insomnia
+- Postman ou Insomnia Para consumir os ENDPOINTS
 
-1. Clonar repositorio:
+1. Clonar repositorio
 
 ```
 git clone https://github.com/dsaoDev/blogAPI.git
 ```
 
-2. Entrar na pasta do projeto:
+2. Entrar na pasta do projeto
 
 ```
 cd BlogAPI
 ```
-
-3. Inicializar o Projeto
+3. Criar um schema no seu banco de dados chamado blogAPI
+```
+create schema blogAPI
+```
+4. Abrir o projeto com sua IDE de preferência ou Inicializar o Projeto via CMD
 
 ```
 ./mvnw spring-boot:run
 ```
-4. Após inicializar o Projeto estará disponivel  http://localhost:8080 por padrão, mas você pode alterar a porta no arquivo application.properties utilizando a propriedade server.port = Numero da porta
+5. Após inicializar o Projeto estará disponivel  http://localhost:8080/{posts,autores,comentarios} por padrão, mas você pode alterar a porta no arquivo application.properties utilizando a propriedade server.port = {NUMERO DA PORTA}
+
+6. Importe a coleção do POSTMAN que está na RAIZ do Projeto e consuma os ENDPOINTS
+   
    
 ## Endpoints
 
@@ -78,5 +82,5 @@ cd BlogAPI
 - PUT/comentarios/idComentario : Atualiza um comentario
 - DELETE/comentarios/idComentario : Deleta um comentario
 
-### Schema 
-![schema](https://github.com/dsaoDev/blogAPI/assets/129787872/0e328d72-cada-45e4-b78a-ab7559928e4d)
+## Schema 
+![schema](https://github.com/dsaoDev/blogAPI/assets/129787872/ea7559f2-e3ad-40ae-84b5-68f6ef90c635)
