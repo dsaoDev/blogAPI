@@ -51,7 +51,6 @@ public class ComentarioMapper implements Mapper<ComentarioRequest, Comentario, C
 
     public List<ComentarioResponse> listConverterDeComentarioEntidadeParaListaDTO(List<Comentario> listComentarios) {
         return listComentarios.stream().map(this::deEntidadeParaResponseDTO).toList();
-
     }
     @Override
     public Page<ComentarioResponse> converterPaginaDeEntidadeParaResponseDTO(Page<Comentario> paginaDeEntidade) {
