@@ -13,20 +13,24 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.security.PrivilegedAction;
+
 @Service
 @RequiredArgsConstructor
 public class PostService {
 
     private final PostMapper postMapper;
 
-    private final UsuarioRepository usuarioRepository;
-
     private final PostRepository postRepository;
 
     private final UsuarioService usuarioService;
 
+    private final FazValidacoesService fazValidacoesService;
+
 
     public PostResponse salvarPost(PostRequest postRequest) {
+        fazValidacoesService.checarSeReferenciaDeIdEValida(postRequest.getIdAutor());
+
         var postEntidade = postMapper.requestDtoParaEntidade(postRequest);
 
         postRepository.save(postEntidade);
@@ -45,6 +49,8 @@ public class PostService {
 
     public PostResponse atualizarPostPorId(Long idPost, PostRequest postRequest) {
         var postEntidade = returnPost(idPost);
+
+        fazValidacoesService.checarSeReferenciaDeIdEValida(postRequest.getIdAutor());
 
         atualizarDadosPost(postRequest, postEntidade);
 

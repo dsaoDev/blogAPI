@@ -36,34 +36,6 @@
 					"response": []
 				},
 				{
-					"name": "salvar comentarios ao post",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "\r\n{\r\n    \"texto\": \"Esse é um comentario Positivo sobre o Post How to be an software engineer v3\",\r\n    \"idAutor\": 2\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{http://localhost:8080}}/posts/3/comentarios",
-							"host": [
-								"{{http://localhost:8080}}"
-							],
-							"path": [
-								"posts",
-								"3",
-								"comentarios"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "listar posts",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -137,13 +109,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{http://localhost:8080}}/posts/2",
+							"raw": "{{http://localhost:8080}}/posts/",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"posts",
-								"2"
+								""
 							]
 						}
 					},
@@ -156,7 +128,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"titulo\": \"testeAtualizacaoDeDAta\",\r\n    \"conteudo\": \"testeAtualizacaoDeData\",\r\n    \"idAutor\":1\r\n}",
+							"raw": "\r\n{\r\n    \"titulo\": \"testeAtualizacaoDeDAta\",\r\n    \"conteudo\": \"testeAtualizacaoDeData\",\r\n    \"idAutor\":50\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -164,13 +136,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{http://localhost:8080}}/posts/5",
+							"raw": "{{http://localhost:8080}}/posts/",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"posts",
-								"5"
+								""
 							]
 						}
 					},
@@ -327,13 +299,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{http://localhost:8080}}/autores/1",
+							"raw": "{{http://localhost:8080}}/autores/60",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"autores",
-								"1"
+								"60"
 							]
 						}
 					},
@@ -345,18 +317,46 @@
 			"name": "Comentarios",
 			"item": [
 				{
+					"name": "salvar comentarios ao post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"texto\": \"Esse é um comentario Positivo sobre o Post How to be an software engineer v3\",\r\n    \"idAutor\": 50\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/posts/1/comentarios",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"posts",
+								"1",
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Paginar comentarios by postId",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{http://localhost:8080}}/comentarios/1",
+							"raw": "{{http://localhost:8080}}/comentarios/60",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"comentarios",
-								"1"
+								"60"
 							]
 						}
 					},
@@ -386,7 +386,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"texto\": \"Esse é um comentario Positivo sobre o Post How to be an software engineer v3-teste\",\r\n    \"idAutor\": 1,\r\n    \"idPost\":3\r\n}",
+							"raw": "\r\n{\r\n    \"texto\": \"Esse é um comentario Positivo sobre o Post How to be an software engineer v3-teste\",\r\n    \"idAutor\": 1,\r\n    \"idPost\":50\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -394,13 +394,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{http://localhost:8080}}/comentarios/1",
+							"raw": "{{http://localhost:8080}}/comentarios/2",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"comentarios",
-								"1"
+								"2"
 							]
 						}
 					},

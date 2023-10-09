@@ -4,13 +4,11 @@ import com.treinaRecife.BlogAPI.dto.request.ComentarioRequest;
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequestMin;
 import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
-import com.treinaRecife.BlogAPI.exceptions.ReferenciaInvalidaException;
 import com.treinaRecife.BlogAPI.mapper.ComentarioMapper;
 import com.treinaRecife.BlogAPI.model.Comentario;
 import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.model.Usuario;
 import com.treinaRecife.BlogAPI.repository.ComentarioRepository;
-import com.treinaRecife.BlogAPI.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,14 +22,14 @@ public class ComentarioService {
 
     private final PostService postService;
 
-    private final UsuarioRepository usuarioRepository;
-
     private final ComentarioMapper comentarioMapper;
+
+    private final FazValidacoesService fazValidacoesService;
 
     public ComentarioResponse salvarComentariosToPostPeloIdPost(Long idPost, ComentarioRequestMin comentarioRequestMin) {
         var postEntidade = postService.returnPost(idPost);
 
-        checarSeReferenciaDeIdEValida(comentarioRequestMin.getIdAutor());
+       fazValidacoesService.checarSeReferenciaDeIdEValida(comentarioRequestMin.getIdAutor());
 
         var comentarioEntidade = comentarioMapper.requestDtoMinParaEntidade(comentarioRequestMin, idPost);
 
@@ -54,6 +52,8 @@ public class ComentarioService {
 
     public ComentarioResponse atualizarComentarioByIdComentario(Long idComentario, ComentarioRequest comentarioRequest) {
         var comentarioEntidade = returnComentario(idComentario);
+
+        fazValidacoesService.checarSeDuasReferenciaDeIdSaoValidas(comentarioRequest.getIdAutor(), comentarioRequest.getIdPost());
 
         atualizarComentario(comentarioRequest, comentarioEntidade);
 
@@ -87,12 +87,8 @@ public class ComentarioService {
         comentario.setAutor(autor);
         comentario.setTexto(comentarioRequest.getTexto());
     }
-        //REVISAR EF AZER MAIS SE NECESSARIO
-    private void checarSeReferenciaDeIdEValida(Long idAutor){
-        if(usuarioRepository.findById(idAutor).isEmpty()){
-            throw new ReferenciaInvalidaException("Id " + idAutor + " que você está tentando referenciar não existe");
-        }
-    }
+
+
 
 
 }
