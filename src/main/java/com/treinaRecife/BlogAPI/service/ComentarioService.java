@@ -4,12 +4,13 @@ import com.treinaRecife.BlogAPI.dto.request.ComentarioRequest;
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequestMin;
 import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
+import com.treinaRecife.BlogAPI.exceptions.ReferenciaInvalidaException;
 import com.treinaRecife.BlogAPI.mapper.ComentarioMapper;
 import com.treinaRecife.BlogAPI.model.Comentario;
 import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.model.Usuario;
 import com.treinaRecife.BlogAPI.repository.ComentarioRepository;
-import com.treinaRecife.BlogAPI.repository.PostRepository;
+import com.treinaRecife.BlogAPI.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,14 +22,16 @@ public class ComentarioService {
 
     private final ComentarioRepository comentarioRepository;
 
-    private final PostRepository postRepository;
-
     private final PostService postService;
+
+    private final UsuarioRepository usuarioRepository;
 
     private final ComentarioMapper comentarioMapper;
 
     public ComentarioResponse salvarComentariosToPostPeloIdPost(Long idPost, ComentarioRequestMin comentarioRequestMin) {
         var postEntidade = postService.returnPost(idPost);
+
+        checarSeReferenciaDeIdEValida(comentarioRequestMin.getIdAutor());
 
         var comentarioEntidade = comentarioMapper.requestDtoMinParaEntidade(comentarioRequestMin, idPost);
 
@@ -68,8 +71,6 @@ public class ComentarioService {
     }
 
 
-
-
     public Comentario returnComentario(Long idComentario) {
         return comentarioRepository.findById(idComentario).orElseThrow(() -> new EntidadeNotFoundException("Comentario com id " + idComentario + " Não existe"));
     }
@@ -85,6 +86,12 @@ public class ComentarioService {
         comentario.setPost(post);
         comentario.setAutor(autor);
         comentario.setTexto(comentarioRequest.getTexto());
+    }
+        //REVISAR EF AZER MAIS SE NECESSARIO
+    private void checarSeReferenciaDeIdEValida(Long idAutor){
+        if(usuarioRepository.findById(idAutor).isEmpty()){
+            throw new ReferenciaInvalidaException("Id " + idAutor + " que você está tentando referenciar não existe");
+        }
     }
 
 

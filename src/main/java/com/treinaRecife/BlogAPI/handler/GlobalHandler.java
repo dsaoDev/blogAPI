@@ -4,6 +4,7 @@ import com.treinaRecife.BlogAPI.error.ErrorResponseForExceptions;
 import com.treinaRecife.BlogAPI.error.ErrorResponseForValidations;
 import com.treinaRecife.BlogAPI.exceptions.EmailDuplicadoException;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
+import com.treinaRecife.BlogAPI.exceptions.ReferenciaInvalidaException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,9 +45,15 @@ public class GlobalHandler {
 
         return ResponseEntity.status(status).body(errorResponseForValidations);
     }
+
     @ExceptionHandler(EmailDuplicadoException.class)
-    public ResponseEntity<ErrorResponseForExceptions> emailDuplicadoEx (EmailDuplicadoException e, HttpServletRequest request){
-        return handlingException(e, request, "Email já existe no sistema", HttpStatus.NOT_FOUND);
+    public ResponseEntity<ErrorResponseForExceptions> emailDuplicadoEx(EmailDuplicadoException e, HttpServletRequest request) {
+        return handlingException(e, request, "Email já existe no sistema", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ReferenciaInvalidaException.class)
+    public ResponseEntity<ErrorResponseForExceptions> referenciaInvalidaEx(ReferenciaInvalidaException e, HttpServletRequest request) {
+        return handlingException(e, request, "Referencia invalida", HttpStatus.BAD_REQUEST);
     }
 
     //Metodo auxiliar para tratar exceções

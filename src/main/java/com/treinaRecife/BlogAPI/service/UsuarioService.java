@@ -69,12 +69,13 @@ public class UsuarioService {
     }
 
     private void checarSeEmailNaoEstaDuplicado(String email){
-        var usuarioOptional = usuarioRepository.findByEmail(email);
-
-        if(usuarioOptional.isPresent()){
-            throw new EmailDuplicadoException("Email que você está tentando cadastrar já existe");
-        }
+       if(usuarioRepository.findByEmail(email).isPresent()){
+           throw new EmailDuplicadoException("Email já cadastrado no sistema");
+       }
     }
+
+
+
 
 
 }
