@@ -4,6 +4,7 @@ import com.treinaRecife.BlogAPI.error.ErrorResponseForExceptions;
 import com.treinaRecife.BlogAPI.error.ErrorResponseForValidations;
 import com.treinaRecife.BlogAPI.exceptions.EmailDuplicadoException;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
+import com.treinaRecife.BlogAPI.exceptions.PaginaVaziaException;
 import com.treinaRecife.BlogAPI.exceptions.ReferenciaInvalidaException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -54,6 +55,10 @@ public class GlobalHandler {
     @ExceptionHandler(ReferenciaInvalidaException.class)
     public ResponseEntity<ErrorResponseForExceptions> referenciaInvalidaEx(ReferenciaInvalidaException e, HttpServletRequest request) {
         return handlingException(e, request, "Referencia invalida", HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(PaginaVaziaException.class)
+    public ResponseEntity<ErrorResponseForExceptions> paginaVaziaEx(PaginaVaziaException e, HttpServletRequest request){
+        return handlingException(e, request, "Pagina vazia", HttpStatus.OK );
     }
 
     //Metodo auxiliar para tratar exceções

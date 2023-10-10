@@ -39,6 +39,8 @@ public class UsuarioService {
     }
 
     public Page<UsuarioResponse> paginarUsuarios(Pageable pageable) {
+        fazValidacoesService.checarSeUmaPaginaEstaVazia(usuarioRepository.findAll(pageable));
+
         return usuarioMapper.converterPaginaDeEntidadeParaResponseDTO(usuarioRepository.findAll(pageable));
     }
 

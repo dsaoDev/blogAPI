@@ -1,11 +1,13 @@
 package com.treinaRecife.BlogAPI.service;
 
 import com.treinaRecife.BlogAPI.exceptions.EmailDuplicadoException;
+import com.treinaRecife.BlogAPI.exceptions.PaginaVaziaException;
 import com.treinaRecife.BlogAPI.exceptions.ReferenciaInvalidaException;
 import com.treinaRecife.BlogAPI.repository.ComentarioRepository;
 import com.treinaRecife.BlogAPI.repository.PostRepository;
 import com.treinaRecife.BlogAPI.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -36,6 +38,12 @@ public class FazValidacoesService {
             throw new ReferenciaInvalidaException("Id " + idAutor + " do Autor que você está tentando referenciar não existe");
         } else if (postRepository.findById(idPost).isEmpty()) {
             throw new ReferenciaInvalidaException("Id " + idPost + " do Post que você está tentando referenciar não existe");
+        }
+    }
+
+    public void checarSeUmaPaginaEstaVazia(Page<?> page){
+        if(page.isEmpty()){
+            throw new PaginaVaziaException("No momento a pagina que você procura está vazia");
         }
     }
 }

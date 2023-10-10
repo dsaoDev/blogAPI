@@ -29,7 +29,7 @@ public class ComentarioService {
     public ComentarioResponse salvarComentariosToPostPeloIdPost(Long idPost, ComentarioRequestMin comentarioRequestMin) {
         var postEntidade = postService.returnPost(idPost);
 
-       fazValidacoesService.checarSeReferenciaDeIdEValida(comentarioRequestMin.getIdAutor());
+        fazValidacoesService.checarSeReferenciaDeIdEValida(comentarioRequestMin.getIdAutor());
 
         var comentarioEntidade = comentarioMapper.requestDtoMinParaEntidade(comentarioRequestMin, idPost);
 
@@ -42,6 +42,8 @@ public class ComentarioService {
 
     public Page<ComentarioResponse> paginarComentariosByPostId(Long postId, Pageable pageable) {
         var postEntidade = postService.returnPost(postId);
+
+        fazValidacoesService.checarSeUmaPaginaEstaVazia(comentarioRepository.findComentarioByPostId(postId, pageable));
 
         Page<ComentarioResponse> comentariosResponse;
 
@@ -61,6 +63,8 @@ public class ComentarioService {
     }
 
     public Page<ComentarioResponse> paginarComentarios(Pageable pageable) {
+        fazValidacoesService.checarSeUmaPaginaEstaVazia(comentarioRepository.findAll(pageable));
+
         return comentarioMapper.converterPaginaDeEntidadeParaResponseDTO(comentarioRepository.findAll(pageable));
     }
 
@@ -87,8 +91,6 @@ public class ComentarioService {
         comentario.setAutor(autor);
         comentario.setTexto(comentarioRequest.getTexto());
     }
-
-
 
 
 }

@@ -44,6 +44,8 @@ public class PostService {
     }
 
     public Page<PostResponse> paginarPosts(Pageable pageable) {
+        fazValidacoesService.checarSeUmaPaginaEstaVazia(postRepository.findAll(pageable));
+
         return postMapper.converterPaginaDeEntidadeParaResponseDTO(postRepository.findAll(pageable));
     }
 
