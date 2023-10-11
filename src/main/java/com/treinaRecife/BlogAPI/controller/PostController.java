@@ -63,7 +63,7 @@ public class PostController {
 
     @GetMapping(value = "/{idPost}/postsEComentarios")
     public ResponseEntity<PostResponseWithComments> buscarPostComComentarios(@PathVariable Long idPost) {
-        return ResponseEntity.ok(postService.retornarPostComComentarios(idPost)));
+        return ResponseEntity.status(HttpStatus.OK).body(postService.retornarPostComComentarios(idPost));
     }
 
 
