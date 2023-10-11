@@ -49,6 +49,8 @@ public class ComentarioMapper implements Mapper<ComentarioRequest, Comentario, C
         return new ComentarioResponse(comentario);
     }
 
+
+
     public List<ComentarioResponse> listConverterDeComentarioEntidadeParaListaDTO(List<Comentario> listComentarios) {
         return listComentarios.stream().map(this::deEntidadeParaResponseDTO).toList();
 
@@ -56,6 +58,10 @@ public class ComentarioMapper implements Mapper<ComentarioRequest, Comentario, C
     @Override
     public Page<ComentarioResponse> converterPaginaDeEntidadeParaResponseDTO(Page<Comentario> paginaDeEntidade) {
        return  paginaDeEntidade.map(this::deEntidadeParaResponseDTO);
+    }
+
+    public static ComentarioResponse deEntidadeParaResponseDTOStaticVersion(Comentario comentario) {
+        return new ComentarioResponse(comentario);
     }
 
 

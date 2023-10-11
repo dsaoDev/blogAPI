@@ -2,18 +2,16 @@ package com.treinaRecife.BlogAPI.service;
 
 import com.treinaRecife.BlogAPI.dto.request.PostRequest;
 import com.treinaRecife.BlogAPI.dto.response.PostResponse;
+import com.treinaRecife.BlogAPI.dto.response.PostResponseWithComments;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
 import com.treinaRecife.BlogAPI.mapper.PostMapper;
 import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.model.Usuario;
 import com.treinaRecife.BlogAPI.repository.PostRepository;
-import com.treinaRecife.BlogAPI.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.security.PrivilegedAction;
 
 @Service
 @RequiredArgsConstructor
@@ -71,6 +69,11 @@ public class PostService {
         return postMapper.converterPaginaDeEntidadeParaResponseDTO(postRepository.findPostsByAutorId(idAutor, pageable));
     }
 
+    public PostResponseWithComments retornarPostComComentarios(Long idPost) {
+        var postEntidade = returnPost(idPost);
+        return postMapper.converteDePostEntidadeParaPostComComentariosDTO(postEntidade);
+    }
+
 
     //Metodo auxiliar
     public Post returnPost(Long idPost) {
@@ -88,7 +91,6 @@ public class PostService {
         postEntidade.setTitulo(postRequest.getTitulo());
 
     }
-
 
 
 }

@@ -4,6 +4,8 @@ import com.treinaRecife.BlogAPI.dto.request.ComentarioRequestMin;
 import com.treinaRecife.BlogAPI.dto.request.PostRequest;
 import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
 import com.treinaRecife.BlogAPI.dto.response.PostResponse;
+import com.treinaRecife.BlogAPI.dto.response.PostResponseWithComments;
+import com.treinaRecife.BlogAPI.model.Post;
 import com.treinaRecife.BlogAPI.service.ComentarioService;
 import com.treinaRecife.BlogAPI.service.PostService;
 import jakarta.validation.Valid;
@@ -57,6 +59,11 @@ public class PostController {
     @PostMapping(value = "/{idPost}/comentarios")
     public ResponseEntity<ComentarioResponse> salvarComentariosToPost(@PathVariable Long idPost, @RequestBody @Valid ComentarioRequestMin comentarioRequestMin) {
         return ResponseEntity.status(HttpStatus.CREATED).body(comentarioService.salvarComentariosToPostPeloIdPost(idPost, comentarioRequestMin));
+    }
+
+    @GetMapping(value = "/{idPost}/postsEComentarios")
+    public ResponseEntity<PostResponseWithComments> buscarPostComComentarios(@PathVariable Long idPost) {
+        return ResponseEntity.status(HttpStatus.OK).body(postService.retornarPostComComentarios(idPost));
     }
 
 

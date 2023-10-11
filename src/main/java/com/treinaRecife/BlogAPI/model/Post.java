@@ -34,7 +34,9 @@ public class Post {
     @ManyToOne()
     @JoinColumn(name = "idUsuario")
     private Usuario autor;
-    
+
+    @OneToMany(mappedBy = "post")
+    private List<Comentario> comentarios;
     @Builder
     public Post(String titulo, String conteudo, Usuario autor) {
         this.titulo = titulo;

@@ -2,7 +2,6 @@ package com.treinaRecife.BlogAPI.service;
 
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequest;
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequestMin;
-import com.treinaRecife.BlogAPI.dto.request.PostRequest;
 import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
 import com.treinaRecife.BlogAPI.mapper.ComentarioMapper;
@@ -33,6 +32,8 @@ public class ComentarioService {
         fazValidacoesService.checarSeReferenciaDeIdEValida(comentarioRequestMin.getIdAutor());
 
         var comentarioEntidade = comentarioMapper.requestDtoMinParaEntidade(comentarioRequestMin, idPost);
+
+        postEntidade.getComentarios().add(comentarioEntidade);
 
         comentarioRepository.save(comentarioEntidade);
 
