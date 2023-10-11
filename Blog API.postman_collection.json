@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"titulo\": \"The life of a Software Engineer \",\r\n    \"conteudo\": \"Conteudo sobre a vida de um Engenheiro de Software \",\r\n    \"idAutor\":1\r\n}",
+							"raw": "\r\n{\r\n    \"titulo\": \"The life of a Software Engineer \",\r\n    \"conteudo\": \"Conteudo sobre a vida de um Engenheiro de Software\",\r\n    \"idAutor\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,6 +89,37 @@
 							"path": [
 								"posts",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar posts c/comentarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"titulo\": \"teste\",\r\n    \"conteudo\": \"teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{http://localhost:8080}}/posts/1/listPostWithComents",
+							"host": [
+								"{{http://localhost:8080}}"
+							],
+							"path": [
+								"posts",
+								"1",
+								"listPostWithComents"
 							]
 						}
 					},
@@ -323,7 +354,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"texto\": \"Esse é um comentario Positivo sobre o Post How to be an software engineer v3\",\r\n    \"idAutor\": 50\r\n    \r\n}",
+							"raw": "\r\n{\r\n    \"texto\": \"Comentario sobre o Post 1\",\r\n    \"idAutor\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -350,13 +381,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{http://localhost:8080}}/comentarios/60",
+							"raw": "{{http://localhost:8080}}/comentarios/2",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"comentarios",
-								"60"
+								"2"
 							]
 						}
 					},
