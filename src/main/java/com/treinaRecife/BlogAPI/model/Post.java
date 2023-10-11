@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_posts")
@@ -30,11 +31,10 @@ public class Post {
     @CreationTimestamp
     private LocalDateTime dataDeCriacao;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne()
     @JoinColumn(name = "idUsuario")
     private Usuario autor;
-
-
+    
     @Builder
     public Post(String titulo, String conteudo, Usuario autor) {
         this.titulo = titulo;
