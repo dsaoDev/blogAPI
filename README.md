@@ -68,6 +68,7 @@ create schema blogAPI
 - DELETE /posts/idPost : Deleta um Post pelo id
 - PUT /posts/idPost : Atualiza um post
 - GET/posts/idAutor/autores : Traz uma pagina com todos os posts pertencentes ao id do Autor
+- GET/posts/idPost/postsEComentarios: Traz um Post e os comentarios referentes ao mesmo
    
 ### Autores
 - POST/autores : cria um novo Autor
