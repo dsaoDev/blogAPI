@@ -13,7 +13,6 @@ public class PostRequest {
     @NotBlank(message = "Campo obrigatorio")
     private String titulo;
 
-
     private String conteudo;
 
     @Min(value = 1, message = "Valor aceitado é de no minimo 1")

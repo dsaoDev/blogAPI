@@ -22,6 +22,7 @@ public class UsuarioResponse {
 
     private String senha;
 
+
     public UsuarioResponse(Usuario autorEntity) {
         this.idUsuario = autorEntity.getIdUsuario();
         this.nome = autorEntity.getNome();
