@@ -1,7 +1,9 @@
 package com.treinaRecife.BlogAPI.mapper;
 
 import com.treinaRecife.BlogAPI.dto.request.UsuarioRequest;
+import com.treinaRecife.BlogAPI.dto.response.EnderecoDTO;
 import com.treinaRecife.BlogAPI.dto.response.UsuarioResponse;
+import com.treinaRecife.BlogAPI.model.Endereco;
 import com.treinaRecife.BlogAPI.model.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
@@ -28,5 +30,9 @@ public class UsuarioMapper implements Mapper<UsuarioRequest, Usuario, UsuarioRes
     @Override
     public Page<UsuarioResponse> converterPaginaDeEntidadeParaResponseDTO(Page<Usuario> paginaDeEntidade) {
         return paginaDeEntidade.map(this::deEntidadeParaResponseDTO);
+    }
+
+    public static EnderecoDTO converterEnderecoEntidadeParaEnderecoDTO(Endereco endereco){
+        return new EnderecoDTO(endereco);
     }
 }

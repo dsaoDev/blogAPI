@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"titulo\": \"The life of a Software Engineer \",\r\n    \"conteudo\": \"Conteudo sobre a vida de um Engenheiro de Software\",\r\n    \"idAutor\":1\r\n}",
+							"raw": "\r\n{\r\n    \"titulo\": \"The life of a Software Engineer \",\r\n    \"conteudo\": \"Conteudo sobre a vida de um Engenheiro de Software\",\r\n    \"idAutor\":2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -82,13 +82,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{http://localhost:8080}}/posts/",
+							"raw": "{{http://localhost:8080}}/posts/1",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"posts",
-								""
+								"1"
 							]
 						}
 					},
@@ -112,14 +112,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{http://localhost:8080}}/posts/1/listPostWithComents",
+							"raw": "{{http://localhost:8080}}/posts/1/postsEComentarios",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"posts",
 								"1",
-								"listPostWithComents"
+								"postsEComentarios"
 							]
 						}
 					},
@@ -185,13 +185,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{http://localhost:8080}}/posts/1/autores",
+							"raw": "{{http://localhost:8080}}/posts/2/autores",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"posts",
-								"1",
+								"2",
 								"autores"
 							]
 						}
@@ -210,7 +210,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"davi\",\r\n    \"sobreNome\":\"Silva\",\r\n    \"email\": \"dsao@test.com\",\r\n    \"senha\":\"12345678aD@\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"rafa\",\r\n    \"sobreNome\":\"Silva\",\r\n    \"email\": \"rafa23@test.com\",\r\n    \"senha\":\"12345678aD@\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Casa 44\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -247,13 +247,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{http://localhost:8080}}/autores/",
+							"raw": "{{http://localhost:8080}}/autores/1",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"autores",
-								""
+								"1"
 							]
 						}
 					},
@@ -266,7 +266,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"davi-teste-atualizacao\",\r\n    \"sobreNome\":\"davi-teste-atualizacao\",\r\n    \"email\": \"davi@teste.com-atualizacao\",\r\n    \"senha\":\"123-atualizacao\"\r\n}",
+							"raw": "{\r\n    \r\n    \"nome\": \"rafa\",\r\n    \"sobreNome\": \"Silva\",\r\n    \"email\": \"rafa234@test.com\",\r\n    \"senha\": \"12345678aD@\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Novo Complemento\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -330,13 +330,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{http://localhost:8080}}/autores/60",
+							"raw": "{{http://localhost:8080}}/autores/1",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"autores",
-								"60"
+								"1"
 							]
 						}
 					},
@@ -354,7 +354,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"texto\": \"Comentario sobre o Post 1\",\r\n    \"idAutor\": 1\r\n}",
+							"raw": "\r\n{\r\n    \"texto\": \"Comentario sobre o Post 1 \",\r\n    \"idAutor\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -381,13 +381,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{http://localhost:8080}}/comentarios/2",
+							"raw": "{{http://localhost:8080}}/comentarios/1",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"comentarios",
-								"2"
+								"1"
 							]
 						}
 					},
