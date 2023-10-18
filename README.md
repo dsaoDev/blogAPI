@@ -59,7 +59,7 @@ create schema blogAPI
 ![POST ENDPOINTS](https://github.com/dsaoDev/blogAPI/assets/129787872/3b2955c4-0888-4f04-b56d-91badca21785)
 
 ### Autor
-![AUTOR ENDPOINTS](https://github.com/dsaoDev/blogAPI/assets/129787872/eb4d1928-918e-4b1c-ae98-3a34274a9553)
+![AUTOR ENDPOINTS V2](https://github.com/dsaoDev/blogAPI/assets/129787872/31640094-e257-455e-905a-69c485563eca)
 
 ### Comentario
 ![COMENTARIO ENDPOINTS](https://github.com/dsaoDev/blogAPI/assets/129787872/51861b33-facb-43a1-b279-cf55b039ede9)
