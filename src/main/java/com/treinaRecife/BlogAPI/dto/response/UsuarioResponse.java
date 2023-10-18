@@ -1,5 +1,6 @@
 package com.treinaRecife.BlogAPI.dto.response;
 
+import com.treinaRecife.BlogAPI.mapper.UsuarioMapper;
 import com.treinaRecife.BlogAPI.model.Usuario;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class UsuarioResponse {
 
     private String senha;
 
+    private EnderecoDTO endereco;
 
     public UsuarioResponse(Usuario autorEntity) {
         this.idUsuario = autorEntity.getIdUsuario();
@@ -29,5 +31,6 @@ public class UsuarioResponse {
         this.sobreNome = autorEntity.getSobreNome();
         this.email = autorEntity.getEmail();
         this.senha = autorEntity.getSenha();
+        this.endereco = UsuarioMapper.converterEnderecoEntidadeParaEnderecoDTO(autorEntity.getEndereco());
     }
 }

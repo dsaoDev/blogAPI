@@ -3,7 +3,9 @@ package com.treinaRecife.BlogAPI.service;
 import com.treinaRecife.BlogAPI.dto.request.UsuarioRequest;
 import com.treinaRecife.BlogAPI.dto.response.UsuarioResponse;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
+import com.treinaRecife.BlogAPI.integration.ViaCepClient;
 import com.treinaRecife.BlogAPI.mapper.UsuarioMapper;
+import com.treinaRecife.BlogAPI.model.Endereco;
 import com.treinaRecife.BlogAPI.model.Usuario;
 import com.treinaRecife.BlogAPI.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,11 +23,21 @@ public class UsuarioService {
 
     private final FazValidacoesService fazValidacoesService;
 
+    private final ViaCepClient viaCepClient;
+
 
     public UsuarioResponse salvarUsuario(UsuarioRequest usuarioRequest) {
         var usuarioEntidade = usuarioMapper.requestDtoParaEntidade(usuarioRequest);
 
         fazValidacoesService.checarSeEmailNaoEstaDuplicado(usuarioEntidade.getEmail());
+
+        var endereco = viaCepClient.getCep(usuarioRequest.getCep());
+
+        if(usuarioRequest.getComplemento() != null){
+            endereco.setComplemento(usuarioRequest.getComplemento());
+        }
+
+        usuarioEntidade.setEndereco(endereco);
 
         usuarioRepository.save(usuarioEntidade);
 
@@ -68,7 +80,18 @@ public class UsuarioService {
         usuarioEntidade.setSobreNome(usuarioRequest.getSobreNome());
         usuarioEntidade.setEmail(usuarioRequest.getEmail());
         usuarioEntidade.setSenha(usuarioRequest.getSenha());
-    }
 
+        var endereco = checarComplementoDoDto(usuarioRequest);
+
+        usuarioEntidade.setEndereco(endereco);
+    }
+    private Endereco checarComplementoDoDto(UsuarioRequest usuarioRequest){
+        var endereco = viaCepClient.getCep(usuarioRequest.getCep());
+
+        if(usuarioRequest.getComplemento() != null){
+            endereco.setComplemento(usuarioRequest.getComplemento());
+        }
+        return endereco;
+    }
 
 }
