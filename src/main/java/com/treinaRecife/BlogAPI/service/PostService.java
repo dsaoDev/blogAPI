@@ -6,7 +6,7 @@ import com.treinaRecife.BlogAPI.dto.response.PostResponseWithComments;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
 import com.treinaRecife.BlogAPI.mapper.PostMapper;
 import com.treinaRecife.BlogAPI.model.Post;
-import com.treinaRecife.BlogAPI.model.Usuario;
+import com.treinaRecife.BlogAPI.model.Autor;
 import com.treinaRecife.BlogAPI.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,7 +21,7 @@ public class PostService {
 
     private final PostRepository postRepository;
 
-    private final UsuarioService usuarioService;
+    private final AutorService autorService;
 
     private final FazValidacoesService fazValidacoesService;
 
@@ -64,7 +64,7 @@ public class PostService {
     }
 
     public Page<PostResponse> acharPostByAutorId(Long idAutor, Pageable pageable) {
-        var autorEntidade = usuarioService.returnUsuario(idAutor);
+        var autorEntidade = autorService.returnAutor(idAutor);
 
         return postMapper.converterPaginaDeEntidadeParaResponseDTO(postRepository.findPostsByAutorId(idAutor, pageable));
     }
@@ -83,8 +83,8 @@ public class PostService {
 
     //Metodo Auxiliar
     private void atualizarDadosPost(PostRequest postRequest, Post postEntidade) {
-        Usuario autorEntidade = new Usuario();
-        autorEntidade.setIdUsuario(postRequest.getIdAutor());
+        Autor autorEntidade = new Autor();
+        autorEntidade.setIdAutor(postRequest.getIdAutor());
 
         postEntidade.setAutor(autorEntidade);
         postEntidade.setConteudo(postRequest.getConteudo());

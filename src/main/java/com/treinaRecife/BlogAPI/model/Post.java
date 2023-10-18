@@ -32,13 +32,14 @@ public class Post {
     private LocalDateTime dataDeCriacao;
 
     @ManyToOne()
-    @JoinColumn(name = "idUsuario")
-    private Usuario autor;
+    @JoinColumn(name = "idAutor")
+    private Autor autor;
 
     @OneToMany(mappedBy = "post")
     private List<Comentario> comentarios;
+
     @Builder
-    public Post(String titulo, String conteudo, Usuario autor) {
+    public Post(String titulo, String conteudo, Autor autor) {
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.autor = autor;

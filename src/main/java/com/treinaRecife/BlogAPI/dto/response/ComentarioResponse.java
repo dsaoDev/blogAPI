@@ -30,7 +30,7 @@ public class ComentarioResponse {
         this.idComentario = comentarioEntity.getIdComentario();
         this.texto = comentarioEntity.getTexto();
         this.dataDeCriacao = comentarioEntity.getDataDeCriacao();
-        this.idAutor = comentarioEntity.getAutor().getIdUsuario();
+        this.idAutor = comentarioEntity.getAutor().getIdAutor();
         this.idPost = comentarioEntity.getPost().getIdPost();
     }
 }

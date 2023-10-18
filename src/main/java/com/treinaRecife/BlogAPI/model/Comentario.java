@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -28,15 +27,15 @@ public class Comentario {
     private LocalDateTime dataDeCriacao;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idUsuario")
-    private Usuario autor;
+    @JoinColumn(name = "idAutor")
+    private Autor autor;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "idPost")
     private Post post;
 
     @Builder
-    public Comentario(String texto, Usuario autor, Post post) {
+    public Comentario(String texto, Autor autor, Post post) {
         this.texto = texto;
         this.autor = autor;
         this.post = post;

@@ -2,7 +2,6 @@ package com.treinaRecife.BlogAPI.controller;
 
 import com.treinaRecife.BlogAPI.dto.request.ComentarioRequest;
 import com.treinaRecife.BlogAPI.dto.response.ComentarioResponse;
-import com.treinaRecife.BlogAPI.dto.response.PostResponse;
 import com.treinaRecife.BlogAPI.error.ErrorResponseForExceptions;
 import com.treinaRecife.BlogAPI.error.ErrorResponseForValidations;
 import com.treinaRecife.BlogAPI.service.ComentarioService;
@@ -17,8 +16,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

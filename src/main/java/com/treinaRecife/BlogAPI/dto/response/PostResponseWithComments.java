@@ -31,7 +31,7 @@ public class PostResponseWithComments {
         this.titulo = postEntidade.getTitulo();
         this.conteudo = postEntidade.getConteudo();
         this.dataDeCriacao = postEntidade.getDataDeCriacao();
-        this.idAutor = postEntidade.getAutor().getIdUsuario();
+        this.idAutor = postEntidade.getAutor().getIdAutor();
         this.comentarioResponses = postEntidade.getComentarios().stream().map(ComentarioMapper::deEntidadeParaResponseDTOStaticVersion).toList();
     }
 

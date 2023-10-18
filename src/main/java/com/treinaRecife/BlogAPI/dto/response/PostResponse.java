@@ -27,6 +27,6 @@ public class PostResponse {
         this.titulo = postEntity.getTitulo();
         this.conteudo = postEntity.getConteudo();
         this.dataDeCriacao = postEntity.getDataDeCriacao();
-        this.idAutor = postEntity.getAutor().getIdUsuario();
+        this.idAutor = postEntity.getAutor().getIdAutor();
     }
 }

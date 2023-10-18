@@ -7,15 +7,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tb_usuarios")
+@Table(name = "tb_autores")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuario {
+public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Long idAutor;
 
     @Column(length = 50, nullable = false)
     private String nome;
@@ -23,19 +23,13 @@ public class Usuario {
     @Column(length = 150, nullable = false)
     private String sobreNome;
 
-    @Column(length = 100, nullable = false, unique = true)
-    private String email;
-
-    @Column(length = 20, nullable = false)
-    private String senha;
-
     @Embedded
     private Endereco endereco;
+
     @Builder
-    public Usuario(String nome, String sobreNome, String email, String senha){
+    public Autor(String nome, String sobreNome) {
         this.nome = nome;
         this.sobreNome = sobreNome;
-        this.email = email;
-        this.senha = senha;
+
     }
 }

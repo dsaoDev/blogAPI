@@ -5,7 +5,7 @@ import com.treinaRecife.BlogAPI.exceptions.PaginaVaziaException;
 import com.treinaRecife.BlogAPI.exceptions.ReferenciaInvalidaException;
 import com.treinaRecife.BlogAPI.repository.ComentarioRepository;
 import com.treinaRecife.BlogAPI.repository.PostRepository;
-import com.treinaRecife.BlogAPI.repository.UsuarioRepository;
+import com.treinaRecife.BlogAPI.repository.AutorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
@@ -18,23 +18,23 @@ public class FazValidacoesService {
 
     private final PostRepository postRepository;
 
-    private final UsuarioRepository usuarioRepository;
+    private final AutorRepository autorRepository;
 
     public void checarSeReferenciaDeIdEValida(Long id) {
-        if (usuarioRepository.findById(id).isEmpty()) {
+        if (autorRepository.findById(id).isEmpty()) {
             throw new ReferenciaInvalidaException("Id " + id + " que você está tentando referenciar não existe");
 
         }
     }
 
-    public void checarSeEmailNaoEstaDuplicado(String email){
-        if(usuarioRepository.findByEmail(email).isPresent()){
+    /*public void checarSeEmailNaoEstaDuplicado(String email){
+        if(autorRepository.findByEmail(email).isPresent()){
             throw new EmailDuplicadoException("Email já cadastrado no sistema");
         }
-    }
+    }*/
 
     public void checarSeDuasReferenciaDeIdSaoValidas(Long idAutor, Long idPost){
-        if(usuarioRepository.findById(idAutor).isEmpty()){
+        if(autorRepository.findById(idAutor).isEmpty()){
             throw new ReferenciaInvalidaException("Id " + idAutor + " do Autor que você está tentando referenciar não existe");
         } else if (postRepository.findById(idPost).isEmpty()) {
             throw new ReferenciaInvalidaException("Id " + idPost + " do Post que você está tentando referenciar não existe");

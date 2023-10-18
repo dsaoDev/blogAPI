@@ -24,10 +24,10 @@ public class SwaggerConfig {
     public OpenAPI blogAPI() {
         return new OpenAPI()
                 .info(new Info().title("Blog-API")
-                        .description("Blog API developed for study purposes")
+                        .description("OpenAPI documentation for a Blog")
                         .version("v0.0.1")
-                        .contact(new Contact().url("https://www.linkedin.com/in/davi-silva-b91211271/").name("Davi Silva Alves"))
-                        .license(new License().name("Spring Doc").url("https://springdoc.org")));
+                        .contact(new Contact().url("https://www.linkedin.com/in/davi-silva-b91211271/").name("Davi Silva Alves").email("dsaodev@gmail.com"))
+                        .license(new License().name("License").url("https://springdoc.org")));
 
     }
 

@@ -13,6 +13,6 @@ import java.util.Optional;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    @Query(value = "SELECT p FROM Post p WHERE p.autor.idUsuario = :idAutor")
+    @Query(value = "SELECT p FROM Post p WHERE p.autor.idAutor = :idAutor")
     Page<Post> findPostsByAutorId(Long idAutor, Pageable pageable);
 }

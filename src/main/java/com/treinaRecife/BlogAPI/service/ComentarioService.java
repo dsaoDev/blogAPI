@@ -7,7 +7,7 @@ import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
 import com.treinaRecife.BlogAPI.mapper.ComentarioMapper;
 import com.treinaRecife.BlogAPI.model.Comentario;
 import com.treinaRecife.BlogAPI.model.Post;
-import com.treinaRecife.BlogAPI.model.Usuario;
+import com.treinaRecife.BlogAPI.model.Autor;
 import com.treinaRecife.BlogAPI.repository.ComentarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -84,8 +84,8 @@ public class ComentarioService {
         var post = new Post();
         post.setIdPost(comentarioRequest.getIdPost());
 
-        var autor = new Usuario();
-        autor.setIdUsuario(comentarioRequest.getIdAutor());
+        var autor = new Autor();
+        autor.setIdAutor(comentarioRequest.getIdAutor());
 
         comentario.setPost(post);
         comentario.setAutor(autor);

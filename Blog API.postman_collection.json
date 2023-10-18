@@ -210,7 +210,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"rafa\",\r\n    \"sobreNome\":\"Silva\",\r\n    \"email\": \"rafa23@test.com\",\r\n    \"senha\":\"12345678aD@\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Casa 44\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"rafa\",\r\n    \"sobreNome\":\"Silva\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Casa 44\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -266,7 +266,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \r\n    \"nome\": \"rafa\",\r\n    \"sobreNome\": \"Silva\",\r\n    \"email\": \"rafa234@test.com\",\r\n    \"senha\": \"12345678aD@\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Novo Complemento\"\r\n}",
+							"raw": "{\r\n    \r\n    \"nome\": \"davi\",\r\n    \"sobreNome\": \"Silva\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Novo Complemento\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -354,7 +354,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"texto\": \"Comentario sobre o Post 1 \",\r\n    \"idAutor\": 1\r\n}",
+							"raw": "\r\n{\r\n    \"texto\": \"Comentario sobre o Post 1 \",\r\n    \"idAutor\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
