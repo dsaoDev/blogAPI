@@ -16,7 +16,8 @@ Esta é uma API de Blog que foi um Desafio tecnico passado pelo Treina Recife qu
 - Spring Validation -> Dependência utilizada para validação dos atributos 
 - MySQL Connector -> Utilizado para se connectar ao Banco de Dados MySQL
 - Devtools -> Utilizado para fazer o Live reload para melhor experiência de desenvolvimento
-- Swagger -> Utilizado para fazer a documentação da API
+- Swagger -> Utilizado para documentar a API
+- Spring Cloud OpenFeign -> Utilizado para fazer chamada a API externas
 
 ## Versionamento
 - JAVA 17
