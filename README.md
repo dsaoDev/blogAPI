@@ -66,7 +66,7 @@ create schema blogAPI
 
 
 ## Schema 
-![schema](https://github.com/dsaoDev/blogAPI/assets/129787872/ea7559f2-e3ad-40ae-84b5-68f6ef90c635)
+![shema v2](https://github.com/dsaoDev/blogAPI/assets/129787872/e9184bdd-dc66-401c-a5eb-21917f1f16f5)
 
 # Autor
 Davi Silva Alves de Oliveira (dsao)
