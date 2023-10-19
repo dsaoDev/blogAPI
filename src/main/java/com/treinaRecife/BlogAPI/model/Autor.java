@@ -23,13 +23,20 @@ public class Autor {
     @Column(length = 150, nullable = false)
     private String sobreNome;
 
+    @Column(length = 14, nullable = false, unique = true)
+    private String cpf;
+
+    @Column(length = 150, nullable = false, unique = true)
+    private String email;
+
     @Embedded
     private Endereco endereco;
 
     @Builder
-    public Autor(String nome, String sobreNome) {
+    public Autor(String nome, String sobreNome, String cpf, String email) {
         this.nome = nome;
         this.sobreNome = sobreNome;
-
+        this.cpf = cpf;
+        this.email = email;
     }
 }

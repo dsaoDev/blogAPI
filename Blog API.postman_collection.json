@@ -204,13 +204,13 @@
 			"name": "Autor",
 			"item": [
 				{
-					"name": "salvar usuario",
+					"name": "salvar autor",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"rafa\",\r\n    \"sobreNome\":\"Silva\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Casa 44\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"rafa\",\r\n    \"sobreNome\":\"Silva\",\r\n    \"email\":\"davitestsave@hotmail.com\",\r\n    \"cpf\": \"37993089034\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Casa 44\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -230,7 +230,7 @@
 					"response": []
 				},
 				{
-					"name": "achar usuario por Id",
+					"name": "achar autor por id",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -260,13 +260,13 @@
 					"response": []
 				},
 				{
-					"name": "atualizar usuario por id",
+					"name": "atualizar autor por id",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \r\n    \"nome\": \"davi\",\r\n    \"sobreNome\": \"Silva\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Novo Complemento\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"davi\",\r\n    \"sobreNome\":\"Silva\",\r\n    \"email\":\"davitestatt@hotmail.com\",\r\n    \"cpf\": \"64234222062\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Casa 41\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -274,20 +274,20 @@
 							}
 						},
 						"url": {
-							"raw": "{{http://localhost:8080}}/autores/1",
+							"raw": "{{http://localhost:8080}}/autores/2",
 							"host": [
 								"{{http://localhost:8080}}"
 							],
 							"path": [
 								"autores",
-								"1"
+								"2"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "paginar usuarios",
+					"name": "paginar autores",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -316,7 +316,7 @@
 					"response": []
 				},
 				{
-					"name": "deletar usuario por id",
+					"name": "deletar autor por id",
 					"request": {
 						"method": "DELETE",
 						"header": [],

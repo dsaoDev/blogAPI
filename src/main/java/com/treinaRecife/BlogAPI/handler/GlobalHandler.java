@@ -2,10 +2,10 @@ package com.treinaRecife.BlogAPI.handler;
 
 import com.treinaRecife.BlogAPI.error.ErrorResponseForExceptions;
 import com.treinaRecife.BlogAPI.error.ErrorResponseForValidations;
-import com.treinaRecife.BlogAPI.exceptions.EmailDuplicadoException;
 import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
 import com.treinaRecife.BlogAPI.exceptions.PaginaVaziaException;
 import com.treinaRecife.BlogAPI.exceptions.ReferenciaInvalidaException;
+import com.treinaRecife.BlogAPI.exceptions.UniqueException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,9 +47,9 @@ public class GlobalHandler {
         return ResponseEntity.status(status).body(errorResponseForValidations);
     }
 
-    @ExceptionHandler(EmailDuplicadoException.class)
-    public ResponseEntity<ErrorResponseForExceptions> emailDuplicadoEx(EmailDuplicadoException e, HttpServletRequest request) {
-        return handlingException(e, request, "Email já existe no sistema", HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(UniqueException.class)
+    public ResponseEntity<ErrorResponseForExceptions> emailDuplicadoEx(UniqueException e, HttpServletRequest request) {
+        return handlingException(e, request, "Dados ja cadastrados no sistema", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ReferenciaInvalidaException.class)

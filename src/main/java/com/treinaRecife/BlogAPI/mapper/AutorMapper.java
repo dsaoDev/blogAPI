@@ -20,6 +20,8 @@ public class AutorMapper implements Mapper<AutorRequest, Autor, AutorResponse> {
     public Autor requestDtoParaEntidade(AutorRequest autorRequest) {
         return Autor.builder().nome(autorRequest.getNome())
                 .sobreNome(autorRequest.getSobreNome())
+                .cpf(autorRequest.getCpf())
+                .email(autorRequest.getEmail())
                .build();
     }
 

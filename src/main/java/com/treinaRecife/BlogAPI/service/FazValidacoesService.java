@@ -1,8 +1,8 @@
 package com.treinaRecife.BlogAPI.service;
 
-import com.treinaRecife.BlogAPI.exceptions.EmailDuplicadoException;
 import com.treinaRecife.BlogAPI.exceptions.PaginaVaziaException;
 import com.treinaRecife.BlogAPI.exceptions.ReferenciaInvalidaException;
+import com.treinaRecife.BlogAPI.exceptions.UniqueException;
 import com.treinaRecife.BlogAPI.repository.ComentarioRepository;
 import com.treinaRecife.BlogAPI.repository.PostRepository;
 import com.treinaRecife.BlogAPI.repository.AutorRepository;
@@ -27,11 +27,12 @@ public class FazValidacoesService {
         }
     }
 
-    /*public void checarSeEmailNaoEstaDuplicado(String email){
-        if(autorRepository.findByEmail(email).isPresent()){
-            throw new EmailDuplicadoException("Email já cadastrado no sistema");
+    public void checarSeEmailECpfJaExistemNoBancoDeDados(String email, String cpf){
+        if(autorRepository.findByEmail(email).isPresent() || autorRepository.findByCpf(cpf).isPresent()){
+            throw new UniqueException("Email/CPF já estão cadastrados no sistema");
         }
-    }*/
+
+    }
 
     public void checarSeDuasReferenciaDeIdSaoValidas(Long idAutor, Long idPost){
         if(autorRepository.findById(idAutor).isEmpty()){

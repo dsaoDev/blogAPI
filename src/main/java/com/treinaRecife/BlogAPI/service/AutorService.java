@@ -27,7 +27,9 @@ public class AutorService {
 
 
     public AutorResponse salvarUsuario(AutorRequest autorRequest) {
-        var usuarioEntidade = autorMapper.requestDtoParaEntidade(autorRequest);
+        fazValidacoesService.checarSeEmailECpfJaExistemNoBancoDeDados(autorRequest.getEmail(),autorRequest.getCpf());
+
+        var autorEntidade = autorMapper.requestDtoParaEntidade(autorRequest);
 
         var endereco = viaCepClient.getCep(autorRequest.getCep());
 
@@ -35,12 +37,14 @@ public class AutorService {
             endereco.setComplemento(autorRequest.getComplemento());
         }
 
-        usuarioEntidade.setEndereco(endereco);
+        autorEntidade.setEndereco(endereco);
 
-        autorRepository.save(usuarioEntidade);
+        autorRepository.save(autorEntidade);
 
-        return autorMapper.deEntidadeParaResponseDTO(usuarioEntidade);
+        return autorMapper.deEntidadeParaResponseDTO(autorEntidade);
     }
+
+
 
     public AutorResponse acharUsuarioPorId(Long idUsuario) {
         var usuarioEntidade = returnAutor(idUsuario);
@@ -76,7 +80,8 @@ public class AutorService {
     private void atualizarDadosDoAutor(Autor autorEntidade, AutorRequest autorRequest) {
         autorEntidade.setNome(autorRequest.getNome());
         autorEntidade.setSobreNome(autorRequest.getSobreNome());
-
+        autorEntidade.setEmail(autorRequest.getEmail());
+        autorEntidade.setCpf(autorRequest.getCpf());
         var endereco = checarComplementoDoDto(autorRequest);
 
         autorEntidade.setEndereco(endereco);
