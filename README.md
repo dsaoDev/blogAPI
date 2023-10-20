@@ -25,8 +25,7 @@ Esta é uma API de Blog que foi um Desafio tecnico passado pelo Treina Recife qu
 - MySQL 8.0
 
 ## Como executar o Projeto
-
-#### Pré-requisitos: Java 17, sua IDE de preferência e o Banco de dados MySQL
+Pré-requisitos: Java 17+ sua IDE de preferência e um Banco de dados de preferência o MySQL
 
 1. Clonar repositorio
 
