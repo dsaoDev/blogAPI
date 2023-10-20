@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 @Getter
 @NoArgsConstructor
-
+@Setter
 public class AutorResponse {
 
     private Long idAutor;
