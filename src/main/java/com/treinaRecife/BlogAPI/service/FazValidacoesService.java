@@ -6,6 +6,7 @@ import com.treinaRecife.BlogAPI.exceptions.UniqueException;
 import com.treinaRecife.BlogAPI.repository.ComentarioRepository;
 import com.treinaRecife.BlogAPI.repository.PostRepository;
 import com.treinaRecife.BlogAPI.repository.AutorRepository;
+import com.treinaRecife.BlogAPI.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,8 @@ public class FazValidacoesService {
     private final PostRepository postRepository;
 
     private final AutorRepository autorRepository;
+
+    private final UsuarioRepository usuarioRepository;
 
     public void checarSeReferenciaDeIdEValida(Long id) {
         if (autorRepository.findById(id).isEmpty()) {
@@ -45,6 +48,12 @@ public class FazValidacoesService {
     public void checarSeUmaPaginaEstaVazia(Page<?> page){
         if(page.isEmpty()){
             throw new PaginaVaziaException("No momento a pagina que você procura está vazia");
+        }
+    }
+
+    public void checarSeEmailJaExisteNoBancoDeDados(String email){
+        if(usuarioRepository.findByEmail(email).isPresent()){
+            throw new UniqueException("Email " + email + " Já está cadastrado no sistema");
         }
     }
 }

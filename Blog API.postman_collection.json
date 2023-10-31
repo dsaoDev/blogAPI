@@ -12,11 +12,21 @@
 				{
 					"name": "salvar posts",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkc2FvZGV2QGdtYWlsLmNvbSIsImlhdCI6MTY5ODQzMDIxNiwiZXhwIjoxNjk4NTE2NjE2fQ.i3kvnQiY3SeG8uoT4aOva9YSgQlYdMJmUACVItZ7_ZI",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"titulo\": \"The life of a Software Engineer \",\r\n    \"conteudo\": \"Conteudo sobre a vida de um Engenheiro de Software\",\r\n    \"idAutor\":2\r\n}",
+							"raw": "\r\n{\r\n    \"titulo\": \"The life of a Software Engineer \",\r\n    \"conteudo\": \"Conteudo sobre a vida de um Engenheiro de Software\",\r\n    \"idAutor\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -206,11 +216,21 @@
 				{
 					"name": "salvar autor",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkc2FvdXNlckBnbWFpbC5jb20iLCJpYXQiOjE2OTg0MzA0MzksImV4cCI6MTY5ODUxNjgzOX0.FftGtlX539a8OxKOOLcLvTyKopedXJ6m1vTkRUV20zo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"rafa\",\r\n    \"sobreNome\":\"Silva\",\r\n    \"email\":\"davitestsave@hotmail.com\",\r\n    \"cpf\": \"37993089034\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Casa 44\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"rafa\",\r\n    \"sobreNome\":\"Silva\",\r\n    \"email\":\"davitesaadtsave@hotmail.com\",\r\n    \"cpf\": \"70733319414\",\r\n    \"cep\":\"01001000\",\r\n    \"complemento\":\"Casa 44\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -350,11 +370,21 @@
 				{
 					"name": "salvar comentarios ao post",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkc2FvZGV2QGdtYWlsLmNvbSIsImlhdCI6MTY5ODQzMDIxNiwiZXhwIjoxNjk4NTE2NjE2fQ.i3kvnQiY3SeG8uoT4aOva9YSgQlYdMJmUACVItZ7_ZI",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"texto\": \"Comentario sobre o Post 1 \",\r\n    \"idAutor\": 2\r\n}",
+							"raw": "\r\n{\r\n    \"texto\": \"Comentario sobre o Post 1 \",\r\n    \"idAutor\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -396,6 +426,16 @@
 				{
 					"name": "paginar todos comentarios",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkc2FvZGV2QGdtYWlsLmNvbSIsImlhdCI6MTY5ODQzMDIxNiwiZXhwIjoxNjk4NTE2NjE2fQ.i3kvnQiY3SeG8uoT4aOva9YSgQlYdMJmUACVItZ7_ZI",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -450,6 +490,69 @@
 							"path": [
 								"comentarios",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Registrar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"davi\",\r\n    \"email\": \"user@gmail.com\",\r\n    \"senha\": \"86970351Da@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/autenticacao/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"autenticacao",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"user@gmail.com\",\r\n    \"senha\":\"86970351Da@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/autenticacao/autenticar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"autenticacao",
+								"autenticar"
 							]
 						}
 					},

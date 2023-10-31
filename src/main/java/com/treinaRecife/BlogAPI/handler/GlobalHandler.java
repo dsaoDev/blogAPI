@@ -2,10 +2,7 @@ package com.treinaRecife.BlogAPI.handler;
 
 import com.treinaRecife.BlogAPI.error.ErrorResponseForExceptions;
 import com.treinaRecife.BlogAPI.error.ErrorResponseForValidations;
-import com.treinaRecife.BlogAPI.exceptions.EntidadeNotFoundException;
-import com.treinaRecife.BlogAPI.exceptions.PaginaVaziaException;
-import com.treinaRecife.BlogAPI.exceptions.ReferenciaInvalidaException;
-import com.treinaRecife.BlogAPI.exceptions.UniqueException;
+import com.treinaRecife.BlogAPI.exceptions.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +56,13 @@ public class GlobalHandler {
     @ExceptionHandler(PaginaVaziaException.class)
     public ResponseEntity<ErrorResponseForExceptions> paginaVaziaEx(PaginaVaziaException e, HttpServletRequest request){
         return handlingException(e, request, "Pagina vazia", HttpStatus.OK );
+    }
+
+
+
+    @ExceptionHandler(CustomBadCredentialsException.class)
+    public ResponseEntity<ErrorResponseForExceptions> authenticationEx(CustomBadCredentialsException e, HttpServletRequest request){
+        return handlingException(e, request,"Erro na senha", HttpStatus.BAD_REQUEST);
     }
 
     //Metodo auxiliar para tratar exceções
