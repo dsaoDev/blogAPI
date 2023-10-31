@@ -18,6 +18,7 @@ Esta é uma API de Blog que foi um Desafio tecnico passado pelo Treina Recife qu
 - Devtools -> Utilizado para fazer o Live reload para melhor experiência de desenvolvimento
 - Swagger -> Utilizado para documentar a API
 - Spring Cloud OpenFeign -> Utilizado para fazer chamada a API Externa
+- Spring Security -> Proteger os endpoints da API  baseando-se nas Roles dos Usuarios
 
 ## Versionamento
 - JAVA 17
@@ -48,7 +49,12 @@ create schema blogAPI
 ./mvnw spring-boot:run
 ```
 ## Como consumir os ENDPOINTS
-- Após rodar, o Projeto estará disponivel para testes em http://localhost:8080/swagger-ui.html ou se preferir importe a coleção .json que está na RAIZ do projeto e o consuma utilizando POSTMAN ou INSOMNIA
+- Como o sistema está protegido com Spring security, você tem duas maneiras de testar a aplicação
+1. Mudar o Endpoint de Registro de usuarios para Salvar um Usuario com Role de ADMIN
+  
+2. Criar um usuario com Role de ADMIN direto no banco de dados
+
+- Apos seguir um dos passos acima  o Projeto estará disponivel http://localhost:8080/swagger-ui.html ou se preferir Importe a collection do Postman na raiz do Projeto e o Consuma utilizando Postman ou Insomnia
 
 
 
@@ -63,9 +69,13 @@ create schema blogAPI
 ### Comentario
 ![COMENTARIO ENDPOINTS](https://github.com/dsaoDev/blogAPI/assets/129787872/51861b33-facb-43a1-b279-cf55b039ede9)
 
+### Usuario
+![USUARIOSWAGGER](https://github.com/dsaoDev/blogAPI/assets/129787872/a3af2105-5a83-4cda-ab5d-fe7511700195)
+
 
 ## Schema 
-![shema v2](https://github.com/dsaoDev/blogAPI/assets/129787872/e9184bdd-dc66-401c-a5eb-21917f1f16f5)
+![schema new](https://github.com/dsaoDev/blogAPI/assets/129787872/2d77f6c3-02f8-4174-b0b0-dcd742ba72e1)
+
 
 # Autor
 Davi Silva Alves de Oliveira (dsao)
