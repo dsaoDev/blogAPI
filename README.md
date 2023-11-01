@@ -49,7 +49,7 @@ create schema blogAPI
 ./mvnw spring-boot:run
 ```
 ## Como consumir os ENDPOINTS
-- Como o sistema está protegido com Spring security, você tem duas maneiras de testar a aplicação
+- Como o sistema está protegido com Spring security você tem duas maneiras de testar a aplicação
 1. Mudar o Endpoint de Registro de usuarios para Salvar um Usuario com Role de ADMIN
   
 2. Criar um usuario com Role de ADMIN direto no banco de dados
@@ -61,13 +61,13 @@ create schema blogAPI
 ## Swagger Preview
 
 ### Post
-![POST ENDPOINTS](https://github.com/dsaoDev/blogAPI/assets/129787872/3b2955c4-0888-4f04-b56d-91badca21785)
+![POSTNEWSWAGGER](https://github.com/dsaoDev/blogAPI/assets/129787872/54287757-526c-433e-aa7d-d6bdb8226bd9)
 
 ### Autor
-![AUTOR ENDPOINTS V2](https://github.com/dsaoDev/blogAPI/assets/129787872/31640094-e257-455e-905a-69c485563eca)
+![AUTORNEWSWAGGER](https://github.com/dsaoDev/blogAPI/assets/129787872/c82ef895-51c0-4d27-acf6-dcadb72716ea)
 
 ### Comentario
-![COMENTARIO ENDPOINTS](https://github.com/dsaoDev/blogAPI/assets/129787872/51861b33-facb-43a1-b279-cf55b039ede9)
+![COMENTARIOSWAGGERNEW](https://github.com/dsaoDev/blogAPI/assets/129787872/b5d26404-8b28-49b7-8992-c707a9e8ba3e)
 
 ### Usuario
 ![USUARIOSWAGGER](https://github.com/dsaoDev/blogAPI/assets/129787872/a3af2105-5a83-4cda-ab5d-fe7511700195)
