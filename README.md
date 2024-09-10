@@ -1,6 +1,6 @@
 # Blog API [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/dsaoDev/blogAPI/blob/main/LICENSE)
 
-Esta é uma API de Blog que foi um Desafio tecnico passado pelo Treina Recife que permite criar, ler, atualizar e excluir posts, autores e comentários entre outras diversas funcionalidades.
+Esta é uma API de Blog que permite criar, ler, atualizar e excluir posts, autores e comentários entre outras diversas funcionalidades.
 ## Tecnologias Utilizadas
 
 - JAVA ✔️
